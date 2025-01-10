@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E7EDEE"
+    tools:context=".category">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="436dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/rectangle" />
+
+        <EditText
+            android:id="@+id/txtSearch"
+            android:layout_width="340dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="123dp"
+            android:background="@drawable/rounded_search"
+            android:ems="10"
+            android:hint="  search..."
+            android:inputType="text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.13"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.213" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Browse vehicles by category"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.086"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5"
+            app:layout_constraintVertical_bias="0.016" />
+
+        <ImageView
+            android:id="@+id/btnmortorBike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            app:layout_constraintVertical_bias="0.034"
+            app:srcCompat="@drawable/rectangle_3463" />
+
+        <ImageView
+            android:id="@+id/btnthreeWheelers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btnmortorBike"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/btnmortorBike"
+            app:layout_constraintTop_toBottomOf="@+id/btnmortorBike"
+            app:layout_constraintVertical_bias="0.02"
+            app:srcCompat="@drawable/rectangle_3463" />
+
+        <ImageView
+            android:id="@+id/btncars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btnthreeWheelers"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/btnthreeWheelers"
+            app:layout_constraintTop_toBottomOf="@+id/btnthreeWheelers"
+            app:layout_constraintVertical_bias="0.023"
+            app:srcCompat="@drawable/rectangle_3463" />
+
+        <ImageView
+            android:id="@+id/btnvans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btncars"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/btncars"
+            app:layout_constraintTop_toBottomOf="@+id/btncars"
+            app:layout_constraintVertical_bias="0.035"
+            app:srcCompat="@drawable/rectangle_3463" />
+
+        <ImageView
+            android:id="@+id/btnbicycle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btnvans"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/btnvans"
+            app:layout_constraintTop_toBottomOf="@+id/btnvans"
+            app:layout_constraintVertical_bias="0.033"
+            app:srcCompat="@drawable/rectangle_3463" />
+
+        <ImageView
+            android:id="@+id/btnbuses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btnbicycle"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/btnbicycle"
+            app:layout_constraintTop_toBottomOf="@+id/btnbicycle"
+            app:layout_constraintVertical_bias="0.046"
+            app:srcCompat="@drawable/rectangle_3463" />
+
+        <ImageView
+            android:id="@+id/btnlorries"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btnbuses"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/btnbuses"
+            app:layout_constraintTop_toBottomOf="@+id/btnbuses"
+            app:layout_constraintVertical_bias="0.068"
+            app:srcCompat="@drawable/rectangle_3463" />
+
+        <ImageView
+            android:id="@+id/btntractors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btnlorries"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/btnlorries"
+            app:layout_constraintTop_toBottomOf="@+id/btnlorries"
+            app:layout_constraintVertical_bias="0.078"
+            app:srcCompat="@drawable/rectangle_3463" />
+
+        <ImageView
+            android:id="@+id/btnAllAds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btntractors"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/btntractors"
+            app:layout_constraintTop_toBottomOf="@+id/btntractors"
+            app:layout_constraintVertical_bias="0.183"
+            app:srcCompat="@drawable/rectangle_3463" />
+
+        <ImageView
+            android:id="@+id/btnBackImg"
+            android:layout_width="41dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.019"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView5"
+            app:layout_constraintVertical_bias="0.065"
+            app:srcCompat="@drawable/chevron_left" />
+
+        <TextView
+            android:id="@+id/btntxtBackImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="236dp"
+            android:text="Home"
+            android:textColor="#FFF"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/btnBackImg"
+            app:layout_constraintTop_toTopOf="@+id/btnBackImg"
+            app:layout_constraintVertical_bias="0.1" />
+
+        <ImageView
+            android:id="@+id/imageView28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/btnmortorBike"
+            app:layout_constraintEnd_toEndOf="@+id/btnmortorBike"
+            app:layout_constraintHorizontal_bias="0.27"
+            app:layout_constraintStart_toStartOf="@+id/btnmortorBike"
+            app:layout_constraintTop_toTopOf="@+id/btnmortorBike"
+            app:srcCompat="@drawable/bicycle" />
+
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MortorBike"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView28"
+            app:layout_constraintEnd_toEndOf="@+id/btnmortorBike"
+            app:layout_constraintHorizontal_bias="0.301"
+            app:layout_constraintStart_toEndOf="@+id/imageView28"
+            app:layout_constraintTop_toTopOf="@+id/imageView28"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/imageView29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/btnthreeWheelers"
+            app:layout_constraintEnd_toEndOf="@+id/btnthreeWheelers"
+            app:layout_constraintHorizontal_bias="0.27"
+            app:layout_constraintStart_toStartOf="@+id/btnthreeWheelers"
+            app:layout_constraintTop_toTopOf="@+id/btnthreeWheelers"
+            app:srcCompat="@drawable/three_wheel_car" />
+
+        <ImageView
+            android:id="@+id/imageView30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/btncars"
+            app:layout_constraintEnd_toEndOf="@+id/btncars"
+            app:layout_constraintHorizontal_bias="0.27"
+            app:layout_constraintStart_toStartOf="@+id/btncars"
+            app:layout_constraintTop_toTopOf="@+id/btncars"
+            app:srcCompat="@drawable/car" />
+
+        <ImageView
+            android:id="@+id/imageView31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/btnvans"
+            app:layout_constraintEnd_toEndOf="@+id/btnvans"
+            app:layout_constraintHorizontal_bias="0.27"
+            app:layout_constraintStart_toStartOf="@+id/btnvans"
+            app:layout_constraintTop_toTopOf="@+id/btnvans"
+            app:srcCompat="@drawable/bus_1" />
+
+        <ImageView
+            android:id="@+id/imageView32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/btnbicycle"
+            app:layout_constraintEnd_toEndOf="@+id/btnbicycle"
+            app:layout_constraintHorizontal_bias="0.27"
+            app:layout_constraintStart_toStartOf="@+id/btnbicycle"
+            app:layout_constraintTop_toTopOf="@+id/btnbicycle"
+            app:srcCompat="@drawable/bicycle" />
+
+        <ImageView
+            android:id="@+id/imageView33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/btnbuses"
+            app:layout_constraintEnd_toEndOf="@+id/btnbuses"
+            app:layout_constraintHorizontal_bias="0.27"
+            app:layout_constraintStart_toStartOf="@+id/btnbuses"
+            app:layout_constraintTop_toTopOf="@+id/btnbuses"
+            app:srcCompat="@drawable/bus" />
+
+        <ImageView
+            android:id="@+id/imageView34"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/btnlorries"
+            app:layout_constraintEnd_toEndOf="@+id/btnlorries"
+            app:layout_constraintHorizontal_bias="0.27"
+            app:layout_constraintStart_toStartOf="@+id/btnlorries"
+            app:layout_constraintTop_toTopOf="@+id/btnlorries"
+            app:srcCompat="@drawable/truck" />
+
+        <ImageView
+            android:id="@+id/imageView36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/btntractors"
+            app:layout_constraintEnd_toEndOf="@+id/btntractors"
+            app:layout_constraintHorizontal_bias="0.27"
+            app:layout_constraintStart_toStartOf="@+id/btntractors"
+            app:layout_constraintTop_toTopOf="@+id/btntractors"
+            app:srcCompat="@drawable/tractor" />
+
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Therewheelers"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView29"
+            app:layout_constraintEnd_toEndOf="@+id/btnthreeWheelers"
+            app:layout_constraintHorizontal_bias="0.376"
+            app:layout_constraintStart_toEndOf="@+id/imageView29"
+            app:layout_constraintTop_toTopOf="@+id/imageView29"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cars"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView30"
+            app:layout_constraintEnd_toEndOf="@+id/btncars"
+            app:layout_constraintHorizontal_bias="0.222"
+            app:layout_constraintStart_toEndOf="@+id/imageView30"
+            app:layout_constraintTop_toTopOf="@+id/imageView30"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vans"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView31"
+            app:layout_constraintEnd_toEndOf="@+id/btnvans"
+            app:layout_constraintHorizontal_bias="0.227"
+            app:layout_constraintStart_toEndOf="@+id/imageView31"
+            app:layout_constraintTop_toTopOf="@+id/imageView31"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bicycle"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView32"
+            app:layout_constraintEnd_toEndOf="@+id/btnbicycle"
+            app:layout_constraintHorizontal_bias="0.248"
+            app:layout_constraintStart_toEndOf="@+id/imageView32"
+            app:layout_constraintTop_toTopOf="@+id/imageView32"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView34"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bus"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView33"
+            app:layout_constraintEnd_toEndOf="@+id/btnbuses"
+            app:layout_constraintHorizontal_bias="0.216"
+            app:layout_constraintStart_toEndOf="@+id/imageView33"
+            app:layout_constraintTop_toTopOf="@+id/imageView33"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView35"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lorries Truck"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView34"
+            app:layout_constraintEnd_toEndOf="@+id/btnlorries"
+            app:layout_constraintHorizontal_bias="0.336"
+            app:layout_constraintStart_toEndOf="@+id/imageView34"
+            app:layout_constraintTop_toTopOf="@+id/imageView34"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tractors"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView36"
+            app:layout_constraintEnd_toEndOf="@+id/btntractors"
+            app:layout_constraintHorizontal_bias="0.261"
+            app:layout_constraintStart_toEndOf="@+id/imageView36"
+            app:layout_constraintTop_toTopOf="@+id/imageView36"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView37"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All Ads"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/btnAllAds"
+            app:layout_constraintEnd_toEndOf="@+id/btnAllAds"
+            app:layout_constraintStart_toStartOf="@+id/btnAllAds"
+            app:layout_constraintTop_toTopOf="@+id/btnAllAds" />
+
+        <ImageView
+            android:id="@+id/btnSearch"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtSearch"
+            app:layout_constraintEnd_toEndOf="@+id/txtSearch"
+            app:layout_constraintHorizontal_bias="0.976"
+            app:layout_constraintStart_toStartOf="@+id/txtSearch"
+            app:layout_constraintTop_toTopOf="@+id/txtSearch"
+            app:srcCompat="@drawable/group_1000006143" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

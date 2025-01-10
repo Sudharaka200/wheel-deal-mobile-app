@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="#E7EDEE"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".openchat">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="630dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/rectangle_3578" />
+
+        <ImageView
+            android:id="@+id/btnChatOpen"
+            android:layout_width="44dp"
+            android:layout_height="28dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView22"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.043"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.493"
+            app:srcCompat="@drawable/chevron_left" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="George William"
+            android:textColor="#FFF"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnChatOpen"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/btnChatOpen"
+            app:layout_constraintTop_toTopOf="@+id/btnChatOpen"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="233dp"
+            android:layout_height="41dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.146"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView22"
+            app:layout_constraintVertical_bias="0.022"
+            app:srcCompat="@drawable/rectangle_3584" />
+
+        <TextView
+            android:id="@+id/textView38"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes, are you still interested?"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView12"
+            app:layout_constraintEnd_toEndOf="@+id/imageView12"
+            app:layout_constraintStart_toStartOf="@+id/imageView12"
+            app:layout_constraintTop_toTopOf="@+id/imageView12" />
+
+        <ImageView
+            android:id="@+id/imageView37"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.774"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView12"
+            app:layout_constraintVertical_bias="0.023"
+            app:srcCompat="@drawable/rectangle_3585" />
+
+        <TextView
+            android:id="@+id/textView39"
+            android:layout_width="296dp"
+            android:layout_height="35dp"
+            android:text="Great! can i come by to take a look at it? What’s a good time for you?"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView37"
+            app:layout_constraintEnd_toEndOf="@+id/imageView37"
+            app:layout_constraintStart_toStartOf="@+id/imageView37"
+            app:layout_constraintTop_toTopOf="@+id/imageView37" />
+
+        <ImageView
+            android:id="@+id/imageView39"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView37"
+            app:layout_constraintVertical_bias="0.936"
+            app:srcCompat="@drawable/menu" />
+
+        <ImageView
+            android:id="@+id/imageView40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView39"
+            app:layout_constraintEnd_toEndOf="@+id/imageView39"
+            app:layout_constraintHorizontal_bias="0.972"
+            app:layout_constraintStart_toStartOf="@+id/imageView39"
+            app:layout_constraintTop_toTopOf="@+id/imageView39"
+            app:layout_constraintVertical_bias="0.464"
+            app:srcCompat="@drawable/sent" />
+
+        <EditText
+            android:id="@+id/editTextTextMultiLine"
+            android:layout_width="335dp"
+            android:layout_height="37dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView40"
+            app:layout_constraintEnd_toStartOf="@+id/imageView40"
+            app:layout_constraintStart_toStartOf="@+id/imageView39"
+            app:layout_constraintTop_toTopOf="@+id/imageView40" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
