@@ -12,9 +12,6 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -35,6 +32,18 @@ public class createAccount extends AppCompatActivity {
     EditText address;
     EditText password;
     FirebaseAuth mAuth;
+
+//    @Override
+//    public void onStart(){
+//        super.onStart();
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        if (currentUser != null){
+//            Intent signUpIntent = new Intent(getApplicationContext(), MainActivity.class);
+//            startActivity(signUpIntent);
+//            finish();
+//        }
+//    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +58,7 @@ public class createAccount extends AppCompatActivity {
         password = findViewById(R.id.txtPassword);
         TextView btnSignUp = findViewById(R.id.btnlogin);
         mAuth = FirebaseAuth.getInstance();
-        Button buttonCreateAccount = findViewById(R.id.btnCreateAccount);
+        Button buttonCreateAccount = findViewById(R.id.btnLogin);
 
         buttonCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +119,7 @@ public class createAccount extends AppCompatActivity {
                                                 Toast.makeText(createAccount.this, "Account Created Successfully", Toast.LENGTH_SHORT).show();
                                                 Intent signUpIntent = new Intent(getApplicationContext(), login.class);
                                                 startActivity(signUpIntent);
+                                                finish();
                                             })
                                             .addOnFailureListener(e -> {
                                                 Toast.makeText(createAccount.this, "Failed to save user data: " + e.getMessage(), Toast.LENGTH_SHORT).show();

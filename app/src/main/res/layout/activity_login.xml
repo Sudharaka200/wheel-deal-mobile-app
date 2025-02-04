@@ -75,7 +75,7 @@
             app:layout_constraintVertical_bias="0.021" />
 
         <Button
-            android:id="@+id/btnCreateAccount"
+            android:id="@+id/btnLogin"
             android:layout_width="340dp"
             android:layout_height="45dp"
             android:background="@drawable/rounded_button"
@@ -101,7 +101,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnCreateAccount"
+            app:layout_constraintTop_toBottomOf="@+id/btnLogin"
             app:layout_constraintVertical_bias="0.037" />
 
         <TextView
@@ -121,7 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Froget Password?"
-            app:layout_constraintBottom_toTopOf="@+id/btnCreateAccount"
+            app:layout_constraintBottom_toTopOf="@+id/btnLogin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.856"
             app:layout_constraintStart_toStartOf="parent"
