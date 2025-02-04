@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,18 +16,18 @@
         <activity
             android:name=".chatsNew"
             android:exported="false" />
-        <activity
-            android:name=".chat"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".chatsNew"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".search"
             android:exported="false" />
         <activity
             android:name=".openchat"
             android:exported="false" />
-        <activity
-            android:name=".chats"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".chatsNew"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".createnewadd"
             android:exported="false" />
