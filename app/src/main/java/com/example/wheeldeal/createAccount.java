@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,8 +49,9 @@ public class createAccount extends AppCompatActivity {
         password = findViewById(R.id.txtPassword);
         TextView btnSignUp = findViewById(R.id.btnlogin);
         mAuth = FirebaseAuth.getInstance();
+        Button buttonCreateAccount = findViewById(R.id.btnCreateAccount);
 
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
+        buttonCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String ufirstname ,ulastname, uemail, uaddress, upassword, uphonenumber;
@@ -68,11 +70,11 @@ public class createAccount extends AppCompatActivity {
                     return;
                 }
                 if (TextUtils.isEmpty(ulastname)){
-                    Toast.makeText(createAccount.this, "First Name is Empty !" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(createAccount.this, "Last Name is Empty !" , Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(uemail)){
-                    Toast.makeText(createAccount.this, "First Name is Empty !" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(createAccount.this, "Email is Empty !" , Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(uphonenumber)){
@@ -80,11 +82,11 @@ public class createAccount extends AppCompatActivity {
                     return;
                 }
                 if (TextUtils.isEmpty(uaddress)){
-                    Toast.makeText(createAccount.this, "First Name is Empty !" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(createAccount.this, "Address is Empty !" , Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(upassword)){
-                    Toast.makeText(createAccount.this, "First Name is Empty !" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(createAccount.this, "Password is Empty !" , Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -93,28 +95,25 @@ public class createAccount extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()){
-                                    FirebaseUser user = mAuth.getCurrentUser(); // Get the newly created user
+                                    FirebaseUser user = mAuth.getCurrentUser();
 
-                                    // Create a map to store the additional user data
                                     Map<String, Object> userData = new HashMap<>();
                                     userData.put("firstName", ufirstname);
                                     userData.put("lastName", ulastname);
-                                    userData.put("phoneNumber", uphonenumber); // Store as a String!
+                                    userData.put("phoneNumber", uphonenumber);
                                     userData.put("address", uaddress);
-                                    // ... add other user data
 
-                                    // Store the data in Firestore
                                     FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                    db.collection("users").document(user.getUid()) // Use the user's UID as the document ID
+                                    db.collection("users").document(user.getUid())
                                             .set(userData)
                                             .addOnSuccessListener(aVoid -> {
                                                 Toast.makeText(createAccount.this, "Account Created Successfully", Toast.LENGTH_SHORT).show();
-                                                // Navigate to the next activity or perform other actions
+                                                Intent signUpIntent = new Intent(getApplicationContext(), login.class);
+                                                startActivity(signUpIntent);
                                             })
                                             .addOnFailureListener(e -> {
                                                 Toast.makeText(createAccount.this, "Failed to save user data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                                // Handle the error, e.g., delete the user if necessary
-                                                user.delete(); // Important: Delete the user if data saving fails
+                                                user.delete();
                                             });
                                 }else {
                                     String errorMessage = task.getException().getMessage();
@@ -122,14 +121,14 @@ public class createAccount extends AppCompatActivity {
                                 }
                             }
                         });
+            }
+        });
 
-
-
-
-
-
-//                Intent signUpIntent = new Intent(getApplicationContext(), login.class);
-//                startActivity(signUpIntent);
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent signUpIntent = new Intent(getApplicationContext(), login.class);
+                startActivity(signUpIntent);
             }
         });
     }
