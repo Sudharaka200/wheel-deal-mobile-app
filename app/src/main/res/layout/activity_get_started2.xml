@@ -85,7 +85,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/btnCreateAccount"
+        android:id="@+id/btnLogin"
         android:layout_width="381dp"
         android:layout_height="46dp"
         android:background="@drawable/rounded_button"
@@ -103,9 +103,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btnCreateAccount"
-        app:layout_constraintStart_toStartOf="@+id/btnCreateAccount"
-        app:layout_constraintTop_toBottomOf="@+id/btnCreateAccount"
+        app:layout_constraintEnd_toEndOf="@+id/btnLogin"
+        app:layout_constraintStart_toStartOf="@+id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
         app:layout_constraintVertical_bias="0.271"
         app:srcCompat="@drawable/group_1000006113" />
 </androidx.constraintlayout.widget.ConstraintLayout>

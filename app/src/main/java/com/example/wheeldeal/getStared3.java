@@ -17,7 +17,7 @@ public class getStared3 extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_get_stared3);
 
-        buttonGetStarted = findViewById(R.id.btnCreateAccount);
+        buttonGetStarted = findViewById(R.id.btnLogin);
 
         buttonGetStarted.setOnClickListener(new View.OnClickListener() {
             @Override

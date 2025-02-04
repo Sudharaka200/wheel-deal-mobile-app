@@ -17,7 +17,7 @@ public class getStartedActivity1 extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_get_started1);
 
-        buttonNext1 = findViewById(R.id.btnCreateAccount);
+        buttonNext1 = findViewById(R.id.btnLogin);
 
         buttonNext1.setOnClickListener(new View.OnClickListener() {
             @Override
