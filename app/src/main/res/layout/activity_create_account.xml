@@ -39,16 +39,16 @@
             android:layout_height="44dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/rounded_corner"
-            android:hint="  First Name"
             android:ems="10"
             android:gravity="start|top"
+            android:hint="  First Name"
             android:inputType="textMultiLine"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintHorizontal_bias="0.402"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.177" />
 
         <EditText
             android:id="@+id/txtLastName"
@@ -160,6 +160,17 @@
             app:layout_constraintStart_toEndOf="@+id/textView8"
             app:layout_constraintTop_toTopOf="@+id/textView8"
             app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/imgTakePhoto"
+            android:layout_width="79dp"
+            android:layout_height="75dp"
+            app:layout_constraintBottom_toTopOf="@+id/txtFirstName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.066"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            app:srcCompat="@drawable/group_1000006160" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

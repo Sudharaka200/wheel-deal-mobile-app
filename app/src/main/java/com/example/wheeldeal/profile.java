@@ -7,9 +7,6 @@ import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class profile extends AppCompatActivity {
 
@@ -19,59 +16,50 @@ public class profile extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.profile);
 
-        //homeButton
-        ImageView imageHome = findViewById(R.id.imgHome);
+        //buttonHome
+        ImageView imgHomeButton = findViewById(R.id.imgHome);
 
-        imageHome.setOnClickListener(new View.OnClickListener() {
+        imgHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent homeInten = new Intent(getApplicationContext(), home.class);
-                startActivity(homeInten);
+                Intent homeButtonIntent = new Intent(getApplicationContext(), home.class);
+                startActivity(homeButtonIntent);
             }
         });
 
-        //searchButton
-        ImageView imageSearch = findViewById(R.id.imgSearch);
+        //buttonSearch
+        ImageView imgSearchButton = findViewById(R.id.imgSearch);
 
-        imageSearch.setOnClickListener(new View.OnClickListener() {
+        imgSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent searchIntent = new Intent(getApplicationContext(), search.class);
-                startActivity(searchIntent);
+                Intent searchButtonIntent = new Intent(getApplicationContext(), search.class);
+                startActivity(searchButtonIntent);
             }
         });
 
-        //createNewAd
-        ImageView imgAdPost = findViewById(R.id.imgAddPost);
+        //buttonChat
+        ImageView imgChatbutton = findViewById(R.id.imgChats);
 
-        imgAdPost.setOnClickListener(new View.OnClickListener() {
+        imgChatbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent adPostIntent = new Intent(getApplicationContext(), createnewadd.class);
-                startActivity(adPostIntent);
+                Intent chatButtonIntent = new Intent(getApplicationContext(), chatsNew.class);
+                startActivity(chatButtonIntent);
             }
         });
 
-        //chatbutton
-        ImageView imgChat = findViewById(R.id.imgChat);
+        //button profile
+//        ImageView imgProfileButton = findViewById(R.id.imgProfile);
+//
+//        imgProfileButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent profileButtonIntent = new Intent(getApplicationContext(), profile.class);
+//                startActivity(profileButtonIntent);
+//            }
+//        });
 
-        imgChat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent chatIntent = new Intent(getApplicationContext(), chatsNew.class);
-                startActivity(chatIntent);
-            }
-        });
 
-        //profilebutton
-        ImageView imgProfile = findViewById(R.id.imgProfile);
-
-        imgProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent profileIntent = new Intent(getApplicationContext(), profile.class);
-                startActivity(profileIntent);
-            }
-        });
     }
 }

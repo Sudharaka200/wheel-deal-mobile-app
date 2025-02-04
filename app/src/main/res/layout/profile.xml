@@ -22,236 +22,416 @@
             android:id="@+id/imageView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="630dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/rectangle_3578" />
 
         <TextView
             android:id="@+id/textView20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="232dp"
             android:text="William Smith"
             android:textColor="#FFF"
             android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView41"
+            app:layout_constraintEnd_toEndOf="@+id/imageView9"
+            app:layout_constraintTop_toTopOf="@+id/imageView41" />
+
+        <ImageView
+            android:id="@+id/imgAddPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/group_1000006147" />
+
+        <ImageView
+            android:id="@+id/imgSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/imgAddPost"
+            app:layout_constraintEnd_toStartOf="@+id/imgAddPost"
+            app:layout_constraintTop_toTopOf="@+id/imgAddPost"
+            app:srcCompat="@drawable/group_1000006146" />
+
+        <ImageView
+            android:id="@+id/imgHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/imgSearch"
+            app:layout_constraintEnd_toStartOf="@+id/imgSearch"
+            app:layout_constraintTop_toTopOf="@+id/imgSearch"
+            app:srcCompat="@drawable/group_1000006145" />
+
+        <ImageView
+            android:id="@+id/imgChats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/imgAddPost"
+            app:layout_constraintStart_toEndOf="@+id/imgAddPost"
+            app:layout_constraintTop_toTopOf="@+id/imgAddPost"
+            app:srcCompat="@drawable/group_1000006148" />
+
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/imgChats"
+            app:layout_constraintStart_toEndOf="@+id/imgChats"
+            app:layout_constraintTop_toTopOf="@+id/imgChats"
+            app:srcCompat="@drawable/group_1000006159" />
+
+        <ImageView
+            android:id="@+id/imageView41"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/imageView9"
             app:layout_constraintEnd_toEndOf="@+id/imageView9"
-            app:layout_constraintHorizontal_bias="0.079"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/imageView9"
             app:layout_constraintTop_toTopOf="@+id/imageView9"
-            app:layout_constraintVertical_bias="0.493" />
+            app:layout_constraintVertical_bias="0.514"
+            app:srcCompat="@drawable/user" />
 
-        <Button
-            android:id="@+id/button19"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/btnAccountInformation"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#FFF"
-            android:text="Account Information"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/imgAddPost"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView9"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/rectangle_3550" />
 
-        <Button
-            android:id="@+id/button20"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView45"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#FFF"
+            android:text="Account Information"
+            app:layout_constraintBottom_toBottomOf="@+id/btnAccountInformation"
+            app:layout_constraintEnd_toEndOf="@+id/btnAccountInformation"
+            app:layout_constraintHorizontal_bias="0.056"
+            app:layout_constraintStart_toStartOf="@+id/btnAccountInformation"
+            app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+        <TextView
+            android:id="@+id/textView46"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:text="williamsmith@gmail.com"
+            app:layout_constraintBottom_toBottomOf="@+id/textView45"
+            app:layout_constraintEnd_toEndOf="@+id/btnAccountInformation"
+            app:layout_constraintTop_toTopOf="@+id/textView45" />
+
+        <ImageView
+            android:id="@+id/imageView44"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView46"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView46"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/forward" />
+
+        <ImageView
+            android:id="@+id/btnName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAccountInformation"
+            app:srcCompat="@drawable/rectangle_3550" />
+
+        <TextView
+            android:id="@+id/textView47"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Name"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button19"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintBottom_toBottomOf="@+id/btnName"
+            app:layout_constraintEnd_toEndOf="@+id/btnName"
+            app:layout_constraintHorizontal_bias="0.042"
+            app:layout_constraintStart_toStartOf="@+id/btnName"
+            app:layout_constraintTop_toBottomOf="@+id/btnAccountInformation" />
 
-        <Button
-            android:id="@+id/button21"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView48"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#FFF"
-            android:text="Phone Number "
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button20"
-            app:layout_constraintVertical_bias="0.0" />
+            android:layout_marginEnd="40dp"
+            android:text="William Smith"
+            app:layout_constraintBottom_toBottomOf="@+id/textView47"
+            app:layout_constraintEnd_toEndOf="@+id/btnName"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textView47"
+            app:layout_constraintTop_toTopOf="@+id/textView47" />
 
-        <Button
-            android:id="@+id/button22"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/imageView46"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#FFF"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView48"
+            app:layout_constraintEnd_toEndOf="@+id/btnName"
+            app:layout_constraintTop_toTopOf="@+id/textView48"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/forward" />
+
+        <ImageView
+            android:id="@+id/btnPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnName"
+            app:srcCompat="@drawable/rectangle_3550" />
+
+        <TextView
+            android:id="@+id/textView49"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            app:layout_constraintBottom_toBottomOf="@+id/btnPhoneNumber"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnName" />
+
+        <ImageView
+            android:id="@+id/imageView48"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/textView49"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.956"
+            app:layout_constraintStart_toEndOf="@+id/textView49"
+            app:layout_constraintTop_toTopOf="@+id/textView49"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/forward" />
+
+        <ImageView
+            android:id="@+id/btnAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnPhoneNumber"
+            app:srcCompat="@drawable/rectangle_3550" />
+
+        <TextView
+            android:id="@+id/textView50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Address"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/btnAddress"
+            app:layout_constraintEnd_toEndOf="@+id/btnAddress"
+            app:layout_constraintHorizontal_bias="0.044"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnPhoneNumber" />
+
+        <ImageView
+            android:id="@+id/imageView50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/textView50"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.958"
+            app:layout_constraintStart_toEndOf="@+id/textView50"
+            app:layout_constraintTop_toTopOf="@+id/textView50"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/forward" />
+
+        <ImageView
+            android:id="@+id/createAdvertisment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button21"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/btnAddress"
+            app:srcCompat="@drawable/rectangle_3550" />
 
-        <Button
-            android:id="@+id/button23"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView51"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#FFF"
-            android:text="Create Advertiesmen"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="Create Advertiesment"
+            app:layout_constraintBottom_toBottomOf="@+id/createAdvertisment"
+            app:layout_constraintEnd_toEndOf="@+id/createAdvertisment"
+            app:layout_constraintHorizontal_bias="0.058"
+            app:layout_constraintStart_toStartOf="@+id/createAdvertisment"
+            app:layout_constraintTop_toTopOf="@+id/createAdvertisment" />
+
+        <ImageView
+            android:id="@+id/imageView52"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/textView51"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button22"
-            app:layout_constraintVertical_bias="0.194" />
+            app:layout_constraintHorizontal_bias="0.96"
+            app:layout_constraintStart_toEndOf="@+id/textView51"
+            app:layout_constraintTop_toTopOf="@+id/textView51"
+            app:srcCompat="@drawable/create" />
 
-        <Button
-            android:id="@+id/button24"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/btnMyAds"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#FFF"
-            android:text="My Ads "
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="1dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button23"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/createAdvertisment"
+            app:srcCompat="@drawable/rectangle_3550" />
 
-        <Button
-            android:id="@+id/button25"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView52"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#FFF"
+            android:text="MyAds"
+            app:layout_constraintBottom_toBottomOf="@+id/btnMyAds"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.043"
+            app:layout_constraintStart_toStartOf="@+id/btnMyAds"
+            app:layout_constraintTop_toBottomOf="@+id/createAdvertisment" />
+
+        <ImageView
+            android:id="@+id/imageView54"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/textView52"
+            app:layout_constraintEnd_toEndOf="@+id/btnMyAds"
+            app:layout_constraintHorizontal_bias="0.957"
+            app:layout_constraintStart_toEndOf="@+id/textView52"
+            app:layout_constraintTop_toTopOf="@+id/textView52"
+            app:srcCompat="@drawable/monitor" />
+
+        <ImageView
+            android:id="@+id/btnFavouriteList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnMyAds"
+            app:srcCompat="@drawable/rectangle_3550" />
+
+        <TextView
+            android:id="@+id/textView53"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Favourite List"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/btnFavouriteList"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button24"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintHorizontal_bias="0.048"
+            app:layout_constraintStart_toStartOf="@+id/btnFavouriteList"
+            app:layout_constraintTop_toBottomOf="@+id/btnMyAds" />
 
-        <Button
-            android:id="@+id/button26"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/imageView56"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#FFF"
+            app:layout_constraintBottom_toBottomOf="@+id/textView53"
+            app:layout_constraintEnd_toEndOf="@+id/btnFavouriteList"
+            app:layout_constraintHorizontal_bias="0.978"
+            app:layout_constraintStart_toEndOf="@+id/textView53"
+            app:layout_constraintTop_toTopOf="@+id/textView53"
+            app:srcCompat="@drawable/heart" />
+
+        <ImageView
+            android:id="@+id/imageView57"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnFavouriteList"
+            app:srcCompat="@drawable/rectangle_3550" />
+
+        <TextView
+            android:id="@+id/btnSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Settings"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView57"
+            app:layout_constraintEnd_toEndOf="@+id/imageView57"
+            app:layout_constraintHorizontal_bias="0.044"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button25"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="@+id/imageView57" />
+
+        <ImageView
+            android:id="@+id/imageView58"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/btnSetting"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.968"
+            app:layout_constraintStart_toEndOf="@+id/btnSetting"
+            app:layout_constraintTop_toTopOf="@+id/btnSetting"
+            app:srcCompat="@drawable/settings" />
+
+        <ImageView
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/textView20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.918"
+            app:layout_constraintStart_toEndOf="@+id/textView20"
+            app:layout_constraintTop_toTopOf="@+id/textView20"
+            app:srcCompat="@drawable/logout" />
 
         <Button
-            android:id="@+id/button27"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Rate Us"
-            android:background="#FFF"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/btnDeleteAccount"
+            android:layout_width="186dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/rounded_button"
+            android:text="Delete Account"
+            android:textColor="#FFF"
+            android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.071"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button26"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView57" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <Button
+            android:id="@+id/btnBackHome"
+            android:layout_width="186dp"
+            android:layout_height="41dp"
+            android:background="@drawable/rounded_button"
+            android:layout_marginStart="4dp"
+            android:text="Back To Home"
+            android:textColor="#FFF"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="@+id/btnDeleteAccount"
+            app:layout_constraintStart_toEndOf="@+id/btnDeleteAccount"
+            app:layout_constraintTop_toTopOf="@+id/btnDeleteAccount" />
 
-            <ImageView
-                android:id="@+id/imgHome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"
-                app:srcCompat="@drawable/group_1000006118" />
+        <ImageView
+            android:id="@+id/imageView42"
+            android:layout_width="50dp"
+            android:layout_height="46dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+            app:layout_constraintEnd_toStartOf="@+id/btnLogout"
+            app:layout_constraintHorizontal_bias="0.87"
+            app:layout_constraintStart_toEndOf="@+id/textView20"
+            app:layout_constraintTop_toTopOf="@+id/imageView9"
+            app:layout_constraintVertical_bias="0.418"
+            app:srcCompat="@drawable/group_1000006160" />
 
-            <ImageView
-                android:id="@+id/imgSearch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/imgHome"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imgHome"
-                app:layout_constraintTop_toTopOf="@+id/imgHome"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/group_1000006119" />
-
-            <ImageView
-                android:id="@+id/imgAddPost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/imgSearch"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imgSearch"
-                app:layout_constraintTop_toTopOf="@+id/imgSearch"
-                app:layout_constraintVertical_bias="1.0"
-                app:srcCompat="@drawable/group_1000006120" />
-
-            <ImageView
-                android:id="@+id/imgChat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/imgAddPost"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imgAddPost"
-                app:layout_constraintTop_toTopOf="@+id/imgAddPost"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/group_1000006121" />
-
-            <ImageView
-                android:id="@+id/imgProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/imgChat"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imgChat"
-                app:layout_constraintTop_toTopOf="@+id/imgChat"
-                app:srcCompat="@drawable/group_1000006122" />
-
-            <Button
-                android:id="@+id/button29"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:background="#074799"
-                android:text="Back to Home"
-                android:textColor="#FFF"
-                app:layout_constraintBottom_toBottomOf="@+id/button28"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/button28"
-                app:layout_constraintTop_toTopOf="@+id/button28" />
-
-            <Button
-                android:id="@+id/button28"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:background="#074799"
-                android:text="Delete Account"
-                android:textColor="#FFF"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.149"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.897" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

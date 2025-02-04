@@ -7,9 +7,6 @@ import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class home extends AppCompatActivity {
 
@@ -31,59 +28,7 @@ public class home extends AppCompatActivity {
             }
         });
 
-        //homeButton
-//        ImageView imageHome = findViewById(R.id.imgHome);
-//
-//        imageHome.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent homeInten = new Intent(getApplicationContext(), home.class);
-//                startActivity(homeInten);
-//            }
-//        });
-
-        //searchButton
-        ImageView imageSearch = findViewById(R.id.imgSearch);
-
-        imageSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent searchIntent = new Intent(getApplicationContext(), search.class);
-                startActivity(searchIntent);
-            }
-        });
-
-        //createNewAd
-        ImageView imgAdPost = findViewById(R.id.imgAddPost);
-        imgAdPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent adPostIntent = new Intent(getApplicationContext(), createnewadd.class);
-                startActivity(adPostIntent);
-            }
-        });
-
-        //chatbutton
-        ImageView imgChatButton = findViewById(R.id.imgChat);
-        imgChatButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent chatIntent = new Intent(getApplicationContext(), chatsNew.class);
-                startActivity(chatIntent);
-            }
-        });
-
-        //profilebutton
-        ImageView imgProfile = findViewById(R.id.imgProfile);
-
-        imgProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent profileIntent = new Intent(getApplicationContext(), profile.class);
-                startActivity(profileIntent);
-            }
-        });
-
+        //buttonCategory
         ImageView imgCategory = findViewById(R.id.btnCategory);
 
         imgCategory.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +38,52 @@ public class home extends AppCompatActivity {
                 startActivity(categoryIntent);
             }
         });
+
+        //buttonHome
+//        ImageView imgHomeButton = findViewById(R.id.imgHome);
+//
+//        imgHomeButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent homeButtonIntent = new Intent(getApplicationContext(), home.class);
+//                startActivity(homeButtonIntent);
+//            }
+//        });
+
+        //buttonSearch
+        ImageView imgSearchButton = findViewById(R.id.imgSearch);
+
+        imgSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent searchButtonIntent = new Intent(getApplicationContext(), search.class);
+                startActivity(searchButtonIntent);
+            }
+        });
+
+        //buttonChat
+        ImageView imgChatbutton = findViewById(R.id.imgChats);
+
+        imgChatbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chatButtonIntent = new Intent(getApplicationContext(), chatsNew.class);
+                startActivity(chatButtonIntent);
+            }
+        });
+
+        //button profile
+        ImageView imgProfileButton = findViewById(R.id.imgProfile);
+
+        imgProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent profileButtonIntent = new Intent(getApplicationContext(), profile.class);
+                startActivity(profileButtonIntent);
+            }
+        });
+
+
 
 
 
