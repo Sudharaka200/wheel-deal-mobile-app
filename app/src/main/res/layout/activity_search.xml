@@ -28,21 +28,13 @@
             app:srcCompat="@drawable/group_1000006147" />
 
         <ImageView
-            android:id="@+id/imgChat"
+            android:id="@+id/imgChats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/imgAddPost"
             app:layout_constraintStart_toEndOf="@+id/imgAddPost"
             app:layout_constraintTop_toTopOf="@+id/imgAddPost"
             app:srcCompat="@drawable/group_1000006148" />
-
-        <ImageView
-            android:id="@+id/imgProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@+id/imgChat"
-            app:layout_constraintTop_toTopOf="@+id/imgChat"
-            app:srcCompat="@drawable/group_1000006149" />
 
         <ImageView
             android:id="@+id/imgHome"
@@ -127,10 +119,21 @@
             android:id="@+id/imgHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
             app:layout_constraintBottom_toBottomOf="@+id/imgSearch"
             app:layout_constraintEnd_toStartOf="@+id/imgSearch"
             app:layout_constraintTop_toTopOf="@+id/imgSearch"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/group_1000006145" />
+
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/imgChats"
+            app:layout_constraintStart_toEndOf="@+id/imgChats"
+            app:layout_constraintTop_toTopOf="@+id/imgChats"
+            app:srcCompat="@drawable/group_1000006149" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
