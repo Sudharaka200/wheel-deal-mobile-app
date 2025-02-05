@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">WheelDeal</string>
+    <string-array name="vehicleCategory">
+        <item>Motor Bike</item>
+        <item>Therewheelers</item>
+        <item>Cars</item>
+        <item>Vans</item>
+        <item>Bicycle</item>
+        <item>Bus</item>
+        <item>Lorries Truck</item>
+        <item>Tractors</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="vehicleBrand">
+        <item>Toyota</item>
+        <item>Suzuki</item>
+        <item>Nissan</item>
+        <item>Mitsubishi</item>
+        <item>Tata</item>
+        <item>Bajaj</item>
+        <item>TVS</item>
+        <item>Isuzu</item>
+        <item>Mahindra</item>
+        <item>Mazda</item>
+        <item>Hero</item>
+        <item>Other</item>
+    </string-array>
 </resources>

@@ -39,6 +39,18 @@ public class home extends AppCompatActivity {
             }
         });
 
+        //Add Post
+        ImageView imgAddPost = findViewById(R.id.imgAddPost);
+
+        imgAddPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent addPostIntent = new Intent(getApplicationContext(), createnewadd.class);
+                startActivity(addPostIntent);
+            }
+        });
+
+
         //buttonHome
 //        ImageView imgHomeButton = findViewById(R.id.imgHome);
 //
