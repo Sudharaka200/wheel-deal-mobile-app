@@ -13,6 +13,9 @@
         android:theme="@style/Theme.WheelDeal"
         tools:targetApi="31">
         <activity
+            android:name=".Edit_name"
+            android:exported="false" />
+        <activity
             android:name=".Edit_gmail"
             android:exported="false" />
         <activity
