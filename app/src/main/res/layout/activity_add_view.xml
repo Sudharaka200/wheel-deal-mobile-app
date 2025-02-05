@@ -217,7 +217,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btn22"
             android:layout_width="180dp"
             android:layout_height="45dp"
             android:layout_marginTop="8dp"
@@ -237,9 +237,9 @@
             android:background="@drawable/rounded_button"
             android:text="Chat"
             android:textColor="#FFF"
-            app:layout_constraintBottom_toBottomOf="@+id/button2"
-            app:layout_constraintStart_toEndOf="@+id/button2"
-            app:layout_constraintTop_toTopOf="@+id/button2"
+            app:layout_constraintBottom_toBottomOf="@+id/btn22"
+            app:layout_constraintStart_toEndOf="@+id/btn22"
+            app:layout_constraintTop_toTopOf="@+id/btn22"
             app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
