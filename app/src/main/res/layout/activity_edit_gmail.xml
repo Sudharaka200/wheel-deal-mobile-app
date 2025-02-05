@@ -95,16 +95,30 @@
         tools:layout_editor_absoluteX="200dp" />
 
     <Button
-        android:id="@+id/btn22"
-        android:layout_width="180dp"
-        android:layout_height="45dp"
+        android:id="@+id/btnupdate"
+        android:layout_width="149dp"
+        android:layout_height="43dp"
         android:background="@drawable/rounded_button"
         android:text="Update"
         android:textColor="#FFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textView61"
+        app:layout_constraintHorizontal_bias="0.952"
         app:layout_constraintStart_toStartOf="@+id/textView58"
-        app:layout_constraintTop_toTopOf="@+id/imagView1" />
+        app:layout_constraintTop_toTopOf="@+id/imagView1"
+        app:layout_constraintVertical_bias="0.435" />
+
+    <Button
+        android:id="@+id/btncancel23"
+        android:layout_width="149dp"
+        android:layout_height="43dp"
+        android:background="@drawable/rounded_button"
+        android:text="Cancel"
+        android:textColor="#FFF"
+        app:layout_constraintEnd_toEndOf="@+id/textView61"
+        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintStart_toStartOf="@+id/textView58"
+        tools:layout_editor_absoluteY="298dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
