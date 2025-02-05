@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Edit_number">
+
+
+    <Button
+        android:id="@+id/btncancl1"
+        android:layout_width="157dp"
+        android:layout_height="46dp"
+        android:background="@drawable/rounded_button"
+        android:text="Cancel"
+        android:textColor="#FFF"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="312dp" />
+
+    <Button
+        android:id="@+id/btnupdte2"
+        android:layout_width="160dp"
+        android:layout_height="48dp"
+        android:background="@drawable/rounded_button"
+        android:text="Confirm"
+        android:textColor="#FFF"
+        tools:layout_editor_absoluteX="216dp"
+        tools:layout_editor_absoluteY="312dp" />
+
+    <TextView
+        android:id="@+id/textView69"
+        android:layout_width="204dp"
+        android:layout_height="38dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textView12"
+        app:layout_constraintTop_toTopOf="@+id/textView12"
+        tools:layout_editor_absoluteX="193dp" />
+
+
+
+
+    <TextView
+        android:id="@+id/textView03"
+        android:layout_width="133dp"
+        android:layout_height="31dp"
+        android:text="Current Number"
+        android:textColor="#0D0C0C"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="118dp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="130dp"
+        android:layout_height="36dp"
+        android:text="Verify Code"
+        android:textColor="#0D0C0C"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="228dp" />
+
+    <TextView
+        android:id="@+id/textView04"
+        android:layout_width="133dp"
+        android:layout_height="31dp"
+        android:text="New Number"
+        android:textColor="#0D0C0C"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="172dp" />
+
+
+    <ImageView
+        android:id="@+id/imagView1"
+        android:layout_width="431dp"
+        android:layout_height="101dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/rectangle_3578"
+        tools:layout_editor_absoluteX="-10dp" />
+
+    <TextView
+        android:id="@+id/txtBack58"
+        android:layout_width="124dp"
+        android:layout_height="31dp"
+        android:text="Edit Number"
+        android:textColor="#FFF"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="36dp" />
+
+    <ImageView
+        android:id="@+id/btnBack01"
+        android:layout_width="60dp"
+        android:layout_height="55dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imagView1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="@+id/imagView1"
+        app:layout_constraintTop_toTopOf="@+id/imagView1"
+        app:layout_constraintVertical_bias="0.508"
+        app:srcCompat="@drawable/chevron_left" />
+
+    <TextView
+        android:id="@+id/textView62"
+        android:layout_width="207dp"
+        android:layout_height="31dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textView03"
+        app:layout_constraintTop_toTopOf="@+id/textView03"
+        tools:layout_editor_absoluteX="193dp" />
+
+    <TextView
+        android:id="@+id/textView63"
+        android:layout_width="204dp"
+        android:layout_height="41dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textView04"
+        app:layout_constraintTop_toTopOf="@+id/textView04"
+        tools:layout_editor_absoluteX="193dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
