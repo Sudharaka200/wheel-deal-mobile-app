@@ -6,26 +6,24 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.switchmaterial.SwitchMaterial;
 
 public class createnewadd extends AppCompatActivity {
 
@@ -35,6 +33,7 @@ public class createnewadd extends AppCompatActivity {
     ActivityResultLauncher<Intent> resultLuncher1;
     ActivityResultLauncher<Intent> resultLuncher2;
     ActivityResultLauncher<Intent> resultLuncher3;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +52,7 @@ public class createnewadd extends AppCompatActivity {
 
 
 
-
     }
-
     public void cmbbox(){
         //Vehicle Category
         Spinner Category = findViewById(R.id.cmbVehicleCategory);
