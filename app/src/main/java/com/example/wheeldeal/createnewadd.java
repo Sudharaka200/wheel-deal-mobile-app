@@ -33,24 +33,24 @@ public class createnewadd extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_createnewadd);
 
-        // Initialize UI Elements
+
         cmbbox();
         imgeAddClass();
 
-        // Initialize Choose Location Button
+
         btnChooseLocation = findViewById(R.id.btnChooseLocation);
         btnChooseLocation.setOnClickListener(v -> requestLocationPermission());
     }
 
     public void cmbbox() {
-        // Combobox Setup for Vehicle Category
+
         Spinner Category = findViewById(R.id.cmbVehicleCategory);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
                 R.array.vehicleCategory, android.R.layout.simple_spinner_item);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Category.setAdapter(adapter1);
 
-        // Combobox Setup for Vehicle Brand
+
         Spinner Brand = findViewById(R.id.cmbVehicleBrand);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
                 R.array.vehicleBrand, android.R.layout.simple_spinner_item);
@@ -123,7 +123,7 @@ public class createnewadd extends AppCompatActivity {
         resultLuncher3.launch(intent);
     }
 
-    // Request Location Permission
+
     private void requestLocationPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
