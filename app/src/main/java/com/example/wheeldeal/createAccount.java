@@ -140,6 +140,6 @@ public class createAccount extends AppCompatActivity {
                 Intent signUpIntent = new Intent(getApplicationContext(), login.class);
                 startActivity(signUpIntent);
             }
-        });
+        }); //This is a test comment
     }
 }

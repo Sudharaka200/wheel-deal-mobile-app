@@ -14,6 +14,21 @@
         android:theme="@style/Theme.WheelDeal"
         tools:targetApi="31">
         <activity
+            android:name=".Myads"
+            android:exported="false" />
+        <activity
+            android:name=".Edit_number"
+            android:exported="false" />
+        <activity
+            android:name=".Edit_name"
+            android:exported="false" />
+        <activity
+            android:name=".Edit_gmail"
+            android:exported="false" />
+        <activity
+            android:name=".Favourite"
+            android:exported="false" />
+        <activity
             android:name=".chatsNew"
             android:exported="false" />
 <!--        <activity-->
