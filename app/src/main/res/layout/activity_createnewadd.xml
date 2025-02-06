@@ -10,17 +10,17 @@
 
     <Button
         android:id="@+id/btnChooseLocation"
-        android:layout_width="287dp"
-        android:layout_height="36dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose Location"
         android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_button"
-        android:text="Choose Location On Map"
         android:textAllCaps="false"
+        android:background="@drawable/rounded_button"
         android:textColor="#FFF"
-        app:layout_constraintEnd_toEndOf="@+id/txtPrice"
-        app:layout_constraintHorizontal_bias="0.514"
-        app:layout_constraintStart_toStartOf="@+id/textView60"
-        app:layout_constraintTop_toBottomOf="@+id/txtPrice" />
+        app:layout_constraintTop_toBottomOf="@+id/imgAdd3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 
     <Button
         android:id="@+id/btnclearForm"
