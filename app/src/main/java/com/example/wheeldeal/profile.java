@@ -10,18 +10,18 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
 
 public class profile extends AppCompatActivity {
 
     TextView  txtFullName, txtPhone, txtAddress;
     FirebaseAuth mAuth;
     FirebaseFirestore db;
+    View imgLogout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +37,11 @@ public class profile extends AppCompatActivity {
         txtFullName = findViewById(R.id.textView48);
         txtPhone = findViewById(R.id.textProfilePhone);
         txtAddress = findViewById(R.id.textProfileAddress);
+        imgLogout = findViewById(R.id.btnProfileLogout);
 
         loadUserProfile();
+
+        imgLogout.setOnClickListener(v -> logoutUser());
 
 
         //buttonHome
@@ -74,16 +77,7 @@ public class profile extends AppCompatActivity {
             }
         });
 
-        //button profile
-//        ImageView imgProfileButton = findViewById(R.id.imgProfile);
-//
-//        imgProfileButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent profileButtonIntent = new Intent(getApplicationContext(), profile.class);
-//                startActivity(profileButtonIntent);
-//            }
-//        });
+
     }
     public void loadUserProfile(){
         FirebaseUser user = mAuth.getCurrentUser();
@@ -111,5 +105,27 @@ public class profile extends AppCompatActivity {
                         }
                     });
         }
+    }
+
+    private void logoutUser() {
+        mAuth.signOut();
+        Toast.makeText(profile.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+
+        // Redirect to login page
+        Intent intent = new Intent(profile.this, login.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    private void openActivity(Class<?> activityClass) {
+        Intent intent = new Intent(profile.this, activityClass);
+        startActivity(intent);
+    }
+    private void redirectToLogin() {
+        Intent intent = new Intent(profile.this, login.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 }
