@@ -30,18 +30,6 @@
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/rectangle_3578" />
 
-        <TextView
-            android:id="@+id/textView20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="232dp"
-            android:text="William Smith"
-            android:textColor="#FFF"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView41"
-            app:layout_constraintEnd_toEndOf="@+id/imageView9"
-            app:layout_constraintTop_toTopOf="@+id/imageView41" />
-
         <ImageView
             android:id="@+id/imgAddPost"
             android:layout_width="wrap_content"
@@ -69,6 +57,16 @@
             app:layout_constraintEnd_toStartOf="@+id/imgSearch"
             app:layout_constraintTop_toTopOf="@+id/imgSearch"
             app:srcCompat="@drawable/group_1000006145" />
+
+        <ImageView
+            android:id="@+id/btnPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnName"
+            app:srcCompat="@drawable/rectangle_3550" />
 
         <ImageView
             android:id="@+id/imgChats"
@@ -112,27 +110,6 @@
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/rectangle_3550" />
 
-        <TextView
-            android:id="@+id/textView45"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Account Information"
-            app:layout_constraintBottom_toBottomOf="@+id/btnAccountInformation"
-            app:layout_constraintEnd_toEndOf="@+id/btnAccountInformation"
-            app:layout_constraintHorizontal_bias="0.056"
-            app:layout_constraintStart_toStartOf="@+id/btnAccountInformation"
-            app:layout_constraintTop_toBottomOf="@+id/imageView9" />
-
-        <TextView
-            android:id="@+id/textView46"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:text="williamsmith@gmail.com"
-            app:layout_constraintBottom_toBottomOf="@+id/textView45"
-            app:layout_constraintEnd_toEndOf="@+id/btnAccountInformation"
-            app:layout_constraintTop_toTopOf="@+id/textView45" />
-
         <ImageView
             android:id="@+id/imageView44"
             android:layout_width="wrap_content"
@@ -165,18 +142,6 @@
             app:layout_constraintStart_toStartOf="@+id/btnName"
             app:layout_constraintTop_toBottomOf="@+id/btnAccountInformation" />
 
-        <TextView
-            android:id="@+id/textView48"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:text="William Smith"
-            app:layout_constraintBottom_toBottomOf="@+id/textView47"
-            app:layout_constraintEnd_toEndOf="@+id/btnName"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/textView47"
-            app:layout_constraintTop_toTopOf="@+id/textView47" />
-
         <ImageView
             android:id="@+id/imageView46"
             android:layout_width="wrap_content"
@@ -187,16 +152,6 @@
             app:layout_constraintTop_toTopOf="@+id/textView48"
             app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/forward" />
-
-        <ImageView
-            android:id="@+id/btnPhoneNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnName"
-            app:srcCompat="@drawable/rectangle_3550" />
 
         <TextView
             android:id="@+id/textView49"
@@ -432,6 +387,74 @@
             app:layout_constraintTop_toTopOf="@+id/imageView9"
             app:layout_constraintVertical_bias="0.418"
             app:srcCompat="@drawable/group_1000006160" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="118dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="200dp"
+            android:text="@string/profile"
+            android:textAlignment="center"
+            android:textColor="#FFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView41"
+            app:layout_constraintEnd_toEndOf="@+id/imageView9"
+            app:layout_constraintTop_toTopOf="@+id/imageView41"
+            app:layout_constraintVertical_bias="0.058" />
+
+        <TextView
+            android:id="@+id/textView45"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Account Information"
+            app:layout_constraintBottom_toBottomOf="@+id/btnAccountInformation"
+            app:layout_constraintEnd_toEndOf="@+id/btnAccountInformation"
+            app:layout_constraintHorizontal_bias="0.056"
+            app:layout_constraintStart_toStartOf="@+id/btnAccountInformation"
+            app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+        <TextView
+            android:id="@+id/textProfileAddress"
+            android:layout_width="134dp"
+            android:layout_height="22dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgAddPost"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.808"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.388" />
+
+        <TextView
+            android:id="@+id/textView46"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView45"
+            app:layout_constraintEnd_toEndOf="@+id/btnAccountInformation"
+            app:layout_constraintTop_toTopOf="@+id/textView45" />
+
+        <TextView
+            android:id="@+id/textProfilePhone"
+            android:layout_width="134dp"
+            android:layout_height="22dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.808"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.311" />
+
+        <TextView
+            android:id="@+id/textView48"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView47"
+            app:layout_constraintEnd_toEndOf="@+id/btnName"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textView47"
+            app:layout_constraintTop_toTopOf="@+id/textView47" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
