@@ -3,6 +3,7 @@ package com.example.wheeldeal;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,7 +21,7 @@ public class profile extends AppCompatActivity {
     TextView  txtFullName, txtPhone, txtAddress;
     FirebaseAuth mAuth;
     FirebaseFirestore db;
-    View imgLogout;
+    View imgLogout, imgEName,imgEPhoneNo;
 
 
     @Override
@@ -77,6 +78,18 @@ public class profile extends AppCompatActivity {
             }
         });
 
+//        //buttonEditName
+//        ImageView btnNamebutton = findViewById(R.id.btnName);
+//
+//        btnNamebutton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent nameButtonIntent = new Intent(getApplicationContext(), Edit_name.class);
+//                startActivity(nameButtonIntent);
+//            }
+//        });
+
+
 
     }
     public void loadUserProfile(){
@@ -122,10 +135,7 @@ public class profile extends AppCompatActivity {
         Intent intent = new Intent(profile.this, activityClass);
         startActivity(intent);
     }
-    private void redirectToLogin() {
-        Intent intent = new Intent(profile.this, login.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
+
+
+
 }
