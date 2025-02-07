@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,7 +22,7 @@ public class profile extends AppCompatActivity {
     TextView  txtFullName, txtPhone, txtAddress;
     FirebaseAuth mAuth;
     FirebaseFirestore db;
-    View imgLogout, imgEName,imgEPhoneNo;
+    View imgLogout, btnDeleteAccount;
 
 
     @Override
@@ -39,10 +40,13 @@ public class profile extends AppCompatActivity {
         txtPhone = findViewById(R.id.textProfilePhone);
         txtAddress = findViewById(R.id.textProfileAddress);
         imgLogout = findViewById(R.id.btnProfileLogout);
+        btnDeleteAccount = findViewById(R.id.btnDeleteAccount);
 
         loadUserProfile();
 
         imgLogout.setOnClickListener(v -> logoutUser());
+
+        btnDeleteAccount.setOnClickListener(v -> confirmDeleteAccount());
 
 
         //buttonHome
@@ -78,18 +82,17 @@ public class profile extends AppCompatActivity {
             }
         });
 
-//        //buttonEditName
-//        ImageView btnNamebutton = findViewById(R.id.btnName);
+//        // Name Update Button
+//        ImageView btnNameButton = findViewById(R.id.btnName);
+//        btnNameButton.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Edit_name.class)));
 //
-//        btnNamebutton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent nameButtonIntent = new Intent(getApplicationContext(), Edit_name.class);
-//                startActivity(nameButtonIntent);
-//            }
-//        });
-
-
+//        // Phone Number Update Button
+//        ImageView btnPhoneButton = findViewById(R.id.btnPhoneNumber);
+//        btnPhoneButton.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Edit_number.class)));
+//
+//        // Address Update Button
+//        ImageView btnAddressButton = findViewById(R.id.btnAddress);
+//        btnAddressButton.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Edit_gmail.class)));
 
     }
     public void loadUserProfile(){
@@ -134,6 +137,47 @@ public class profile extends AppCompatActivity {
     private void openActivity(Class<?> activityClass) {
         Intent intent = new Intent(profile.this, activityClass);
         startActivity(intent);
+    }
+    private void confirmDeleteAccount() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Delete Account");
+        builder.setMessage("Are you sure you want to delete your account? This action cannot be undone.");
+
+        builder.setPositiveButton("Delete", (dialog, which) -> deleteAccount());
+        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void deleteAccount() {
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            String userId = user.getUid();
+
+            // Delete Firestore user data
+            db.collection("users").document(userId)
+                    .delete()
+                    .addOnSuccessListener(aVoid -> {
+                        // Delete Firebase Auth account
+                        user.delete()
+                                .addOnCompleteListener(task -> {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(profile.this, "Account deleted successfully", Toast.LENGTH_LONG).show();
+                                        redirectToLogin();
+                                    } else {
+                                        Toast.makeText(profile.this, "Failed to delete account", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                    })
+                    .addOnFailureListener(e -> Toast.makeText(profile.this, "Failed to delete user data", Toast.LENGTH_SHORT).show());
+        }
+    }
+    private void redirectToLogin() {
+        Intent intent = new Intent(profile.this, login.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 
 

@@ -10,35 +10,23 @@
 
     <Button
         android:id="@+id/btncancl1"
-        android:layout_width="157dp"
-        android:layout_height="46dp"
+        android:layout_width="159dp"
+        android:layout_height="49dp"
         android:background="@drawable/rounded_button"
         android:text="Cancel"
         android:textColor="#FFF"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="312dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="264dp" />
 
     <Button
         android:id="@+id/btnupdte2"
-        android:layout_width="160dp"
+        android:layout_width="157dp"
         android:layout_height="48dp"
         android:background="@drawable/rounded_button"
         android:text="Confirm"
         android:textColor="#FFF"
         tools:layout_editor_absoluteX="216dp"
-        tools:layout_editor_absoluteY="312dp" />
-
-    <TextView
-        android:id="@+id/textView69"
-        android:layout_width="204dp"
-        android:layout_height="38dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/textView12"
-        app:layout_constraintTop_toTopOf="@+id/textView12"
-        tools:layout_editor_absoluteX="193dp" />
-
-
-
+        tools:layout_editor_absoluteY="264dp" />
 
     <TextView
         android:id="@+id/textView03"
@@ -50,17 +38,6 @@
         android:textStyle="normal"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="118dp" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="130dp"
-        android:layout_height="36dp"
-        android:text="Verify Code"
-        android:textColor="#0D0C0C"
-        android:textSize="18sp"
-        android:textStyle="normal"
-        tools:layout_editor_absoluteX="19dp"
-        tools:layout_editor_absoluteY="228dp" />
 
     <TextView
         android:id="@+id/textView04"

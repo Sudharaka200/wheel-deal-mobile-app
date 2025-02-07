@@ -59,6 +59,13 @@
         <activity
             android:name=".getStarted2"
             android:exported="false" />
+
+        <activity android:name=".Edit_number"
+            android:exported="true"/>
+
+        <activity android:name=".Edit_name"
+            android:exported="true"/>
+
         <activity
             android:name=".getStartedActivity1"
             android:exported="false" />
