@@ -2,10 +2,14 @@ package com.example.wheeldeal;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
 
@@ -75,4 +79,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
             onCreate(db);
     }
+
+
 }
