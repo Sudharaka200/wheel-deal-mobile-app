@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Edit_name">
+
+
+    <TextView
+        android:id="@+id/textView61"
+        android:layout_width="194dp"
+        android:layout_height="31dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textView58"
+        app:layout_constraintTop_toTopOf="@+id/textView58"
+        tools:layout_editor_absoluteX="200dp" />
+
+    <TextView
+        android:id="@+id/textView60"
+        android:layout_width="194dp"
+        android:layout_height="31dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textView57"
+        app:layout_constraintTop_toTopOf="@+id/textView57"
+        tools:layout_editor_absoluteX="200dp" />
+
+    <TextView
+        android:id="@+id/textView57"
+        android:layout_width="133dp"
+        android:layout_height="31dp"
+        android:text="First Name"
+        android:textColor="#0D0C0C"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="118dp" />
+
+
+    <TextView
+        android:id="@+id/textView56"
+        android:layout_width="133dp"
+        android:layout_height="31dp"
+        android:text="Last Name"
+        android:textColor="#0D0C0C"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="172dp" />
+
+    <ImageView
+        android:id="@+id/imagView1"
+        android:layout_width="431dp"
+        android:layout_height="101dp"
+        app:srcCompat="@drawable/rectangle_3578"
+        tools:layout_editor_absoluteX="-10dp"
+        tools:layout_editor_absoluteY="-3dp" />
+
+    <TextView
+        android:id="@+id/txtBack3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Name"
+        android:textColor="#FFF"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="38dp" />
+
+    <ImageView
+        android:id="@+id/btnBack01"
+        android:layout_width="54dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toStartOf="@+id/imagView1"
+        app:srcCompat="@drawable/chevron_left"
+        tools:layout_editor_absoluteY="29dp" />
+
+    <TextView
+        android:id="@+id/textView59"
+        android:layout_width="194dp"
+        android:layout_height="31dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textView56"
+        app:layout_constraintTop_toTopOf="@+id/textView56"
+        tools:layout_editor_absoluteX="200dp" />
+
+    <Button
+        android:id="@+id/btnverify1"
+        android:layout_width="180dp"
+        android:layout_height="45dp"
+        android:background="@drawable/rounded_button"
+        android:text="Verify"
+        android:textColor="#FFF"
+        app:layout_constraintEnd_toEndOf="@+id/textView59"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textView56"
+        tools:layout_editor_absoluteY="262dp" />
+
+    <Button
+        android:id="@+id/btncancel24"
+        android:layout_width="180dp"
+        android:layout_height="45dp"
+        android:background="@drawable/rounded_button"
+        android:text="Cancel"
+        android:textColor="#FFF"
+        app:layout_constraintEnd_toEndOf="@+id/textView59"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="@+id/textView56"
+        tools:layout_editor_absoluteY="262dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
