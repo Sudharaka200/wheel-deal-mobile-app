@@ -4,12 +4,38 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
+
 public class home extends AppCompatActivity {
 
+    ListView addListView;
+
+    String addTitle[] = {"test1","test3","test4","test1","test2","test3","test4","test1","test2","test3"};
+
+    int addImage[] = {
+            R.drawable.caricon,
+            R.drawable.caricon,
+            R.drawable.caricon,
+            R.drawable.caricon,
+            R.drawable.caricon,
+            R.drawable.caricon,
+            R.drawable.caricon,
+            R.drawable.caricon,
+            R.drawable.caricon,
+            R.drawable.caricon,
+            R.drawable.caricon,
+            R.drawable.caricon,
+            R.drawable.caricon,
+            R.drawable.caricon,
+            };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,16 +43,43 @@ public class home extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home);
 
-        //addView
-        ImageView img = findViewById(R.id.imgPost);
+        addListView = findViewById(R.id.addList);
 
-        img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), addView.class);
-                startActivity(intent);
-            }
-        });
+        ArrayList<HashMap<String, Object>> list = new ArrayList<>();
+
+        for (int i = 0; i < addTitle.length; i++){
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("addTitle", addTitle[i]);
+            map.put("addImage",addImage[i]);
+            list.add(map);
+        }
+        String[] from = {"addTitle","addImage"};
+
+        int to[] = {R.id.addTitle, R.id.addImg};
+
+        SimpleAdapter simpleAdapter = new SimpleAdapter(getApplicationContext(),list, R.layout.list_view_s, from, to);
+
+        addListView.setAdapter(simpleAdapter);
+
+
+
+
+
+
+
+
+
+
+        //addView
+//        ImageView img = findViewById(R.id.imgPost);
+//
+//        img.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), addView.class);
+//                startActivity(intent);
+//            }
+//        });
 
         //buttonCategory
         ImageView imgCategory = findViewById(R.id.btnCategory);
