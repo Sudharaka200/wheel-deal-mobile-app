@@ -12,13 +12,12 @@
         android:id="@+id/btnChooseLocation"
         android:layout_width="287dp"
         android:layout_height="36dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/rounded_button"
         android:text="Choose Location On Map"
         android:textAllCaps="false"
         android:textColor="#FFF"
         app:layout_constraintEnd_toEndOf="@+id/txtPrice"
-        app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="@+id/textView60"
         app:layout_constraintTop_toBottomOf="@+id/txtPrice" />
 
@@ -37,12 +36,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView61" />
 
     <Button
-        android:id="@+id/btnConfirm"
+        android:id="@+id/btnPostAd"
         android:layout_width="162dp"
         android:layout_height="38dp"
         android:layout_marginStart="40dp"
         android:background="@drawable/rounded_button"
-        android:text="Confirm"
+        android:text="Post"
         android:textAllCaps="false"
         android:textColor="#FFF"
         app:layout_constraintBottom_toBottomOf="@+id/btnclearForm"
@@ -51,7 +50,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/Description"
+        android:id="@+id/txtDescription"
         android:layout_width="193dp"
         android:layout_height="99dp"
         android:layout_marginStart="92dp"
@@ -128,6 +127,21 @@
         app:layout_constraintTop_toTopOf="@+id/textView57"
         app:layout_constraintVertical_bias="0.0" />
 
+    <EditText
+        android:id="@+id/txtModel"
+        android:layout_width="195dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="124dp"
+        android:background="@drawable/rounded_corner"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/textView41"
+        app:layout_constraintStart_toEndOf="@+id/textView41"
+        app:layout_constraintTop_toTopOf="@+id/textView41"
+        app:layout_constraintVertical_bias="0.0" />
+
     <ImageView
         android:id="@+id/imageView45"
         android:layout_width="431dp"
@@ -200,6 +214,18 @@
         android:layout_marginTop="20dp"
         android:text="Add Photos"
         android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="@+id/textView41"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView41"
+        app:layout_constraintTop_toBottomOf="@+id/textView41" />
+
+    <TextView
+        android:id="@+id/textView41"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Model"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="@+id/textView55"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView55"
@@ -209,7 +235,7 @@
         android:id="@+id/textView57"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="84dp"
         android:text="Milage (Km)"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="@+id/textView56"
@@ -221,7 +247,7 @@
         android:id="@+id/textView58"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Engine Capacity (cc)"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="@+id/textView57"
@@ -233,7 +259,7 @@
         android:id="@+id/textView59"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:text="Description"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="@+id/textView58"
@@ -245,7 +271,7 @@
         android:id="@+id/textView60"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="92dp"
         android:text="Price (Rs)"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="@+id/textView59"
@@ -257,10 +283,11 @@
         android:id="@+id/textView61"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Location"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="@+id/textView60"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="@+id/textView60"
         app:layout_constraintTop_toBottomOf="@+id/btnChooseLocation" />
 
