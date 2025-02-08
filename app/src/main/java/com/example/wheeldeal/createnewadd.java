@@ -54,7 +54,7 @@ public class createnewadd extends AppCompatActivity {
     TextView vPrice;
     TextView vLocation;
     Button vBtnSave;
-    SQLiteHelper sqLiteHelper;
+
 
 
     @Override
@@ -71,96 +71,12 @@ public class createnewadd extends AppCompatActivity {
         addImage2 = findViewById(R.id.imgAdd2);
         addImage3 = findViewById(R.id.imgAdd3);
         imgeAddClass();
-//        intiAdd();
-
-        vCategory = (Spinner) findViewById(R.id.cmbVehicleCategory);
-        vBrand = (Spinner) findViewById(R.id.cmbVehicleBrand);
-        vImg1 = (ImageView) findViewById(R.id.imgAdd1);
-        vImg2 = (ImageView) findViewById(R.id.imgAdd2);
-        vImg3 = (ImageView) findViewById(R.id.imgAdd3);
-        vMilage = (TextView) findViewById(R.id.txtMilage);
-        vCapacity = (TextView) findViewById(R.id.txtCapacity);
-        vDescription = (TextView) findViewById(R.id.Description);
-        vPrice = (TextView) findViewById(R.id.txtPrice);
-        vLocation = (TextView) findViewById(R.id.txtLocation);
-        vBtnSave = findViewById(R.id.btnConfirm);
-
-
-        sqLiteHelper = new SQLiteHelper(createnewadd.this);
-
-        vBtnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String category = vCategory.getSelectedItem().toString();
-                String brand = vBrand.getSelectedItem().toString();
-                int milage = Integer.parseInt(vMilage.getText().toString());
-                String capacity = vCapacity.getText().toString();
-                String description = vDescription.getText().toString();
-                String price = vPrice.getText().toString();
-                String location = vLocation.getText().toString();
-
-                // Extract images from ImageView
-                Bitmap bitmap1 = ((BitmapDrawable) addImage1.getDrawable()).getBitmap();
-                ByteArrayOutputStream outputStream1 = new ByteArrayOutputStream();
-                bitmap1.compress(Bitmap.CompressFormat.PNG, 100, outputStream1);
-                byte[] img1Bytes = outputStream1.toByteArray();
-
-                Bitmap bitmap2 = ((BitmapDrawable) addImage2.getDrawable()).getBitmap();
-                ByteArrayOutputStream outputStream2 = new ByteArrayOutputStream();
-                bitmap2.compress(Bitmap.CompressFormat.PNG, 100, outputStream2);
-                byte[] img2Bytes = outputStream2.toByteArray();
-
-                Bitmap bitmap3 = ((BitmapDrawable) addImage3.getDrawable()).getBitmap();
-                ByteArrayOutputStream outputStream3 = new ByteArrayOutputStream();
-                bitmap3.compress(Bitmap.CompressFormat.PNG, 100, outputStream3);
-                byte[] img3Bytes = outputStream3.toByteArray();
-
-
-                if (addImage1.getDrawable() == null || addImage2.getDrawable() == null || addImage3.getDrawable() == null) {
-                    Toast.makeText(createnewadd.this, "Please select all images", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-
-                sqLiteHelper.createNewAdd(category, brand, img1Bytes, img2Bytes, img3Bytes, milage, capacity, description, price, location);
-
-                Toast.makeText(createnewadd.this, "Add posted", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
 
     }
-//    private void clearFields() {
-//        vCategory.setSelection(0);
-//        vBrand.setSelection(0);
-//        vMilage.setText("");
-//        vCapacity.setText("");
-//        vDescription.setText("");
-//        vPrice.setText("");
-//        vLocation.setText("");
-//        addImage1.setImageResource(R.drawable.image__1_);
-//        addImage2.setImageResource(R.drawable.image__1_);
-//        addImage3.setImageResource(R.drawable.image__1_);
-//    }
 
 
-//    private void intiAdd(){
-//        vCategory = (Spinner) findViewById(R.id.cmbVehicleCategory);
-//        vBrand = (Spinner) findViewById(R.id.cmbVehicleBrand);
-//        vImg1 = (ImageView) findViewById(R.id.imgAdd1);
-//        vImg2 = (ImageView) findViewById(R.id.imgAdd2);
-//        vImg3 = (ImageView) findViewById(R.id.imgAdd3);
-//        vMilage = (TextView) findViewById(R.id.txtMilage);
-//        vCapacity = (TextView) findViewById(R.id.txtCapacity);
-//        vDescription = (TextView) findViewById(R.id.Description);
-//        vPrice = (TextView) findViewById(R.id.txtPrice);
-//        vLocation = (TextView) findViewById(R.id.txtLocation);
-//
-//        sqLiteHelper = new SQLiteHelper(createnewadd.this);
-//
-//        vBtnSave.setOnClickListener();
-//    }
+
+
 
 
     public void cmbbox(){

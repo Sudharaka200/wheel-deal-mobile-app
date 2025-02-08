@@ -94,6 +94,17 @@ public class profile extends AppCompatActivity {
 //        ImageView btnAddressButton = findViewById(R.id.btnAddress);
 //        btnAddressButton.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Edit_gmail.class)));
 
+
+
+        ImageView btnPhone =  findViewById(R.id.btnPhoneNumber);
+        btnPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent btnP = new Intent(getApplicationContext(), Edit_number.class);
+                startActivity(btnP);
+            }
+        });
+
     }
     public void loadUserProfile(){
         FirebaseUser user = mAuth.getCurrentUser();

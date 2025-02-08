@@ -31,8 +31,8 @@ public class Edit_number extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         // Initialize UI elements
-        editCurrentNumber = findViewById(R.id.textView62);
-        editNewNumber = findViewById(R.id.textView63);
+//        editCurrentNumber = findViewById(R.id.textView62);
+//        editNewNumber = findViewById(R.id.textView63);
         btnConfirm = findViewById(R.id.btnupdte2);
         btnCancel = findViewById(R.id.btncancl1);
 
