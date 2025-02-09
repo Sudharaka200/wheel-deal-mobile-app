@@ -10,6 +10,9 @@ import android.widget.SimpleAdapter;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
@@ -98,8 +101,20 @@ public class home extends AppCompatActivity {
         imgAddPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent addPostIntent = new Intent(getApplicationContext(), createnewadd.class);
-                startActivity(addPostIntent);
+                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                Intent intent;
+                if (currentUser != null){
+                    // User is logged in; go to the createnewadd page.
+                    intent = new Intent(getApplicationContext(), createnewadd.class);
+                }
+                else {
+                    // User is not logged in; redirect to the login page.
+                    intent = new Intent(getApplicationContext(), activity_please_login_screen.class);
+                }
+                startActivity(intent);
+
+//                Intent addPostIntent = new Intent(getApplicationContext(), createnewadd.class);
+//                startActivity(addPostIntent);
             }
         });
 
@@ -147,17 +162,6 @@ public class home extends AppCompatActivity {
                 startActivity(profileButtonIntent);
             }
         });
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }
