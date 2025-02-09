@@ -33,6 +33,8 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,6 +43,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.io.ByteArrayOutputStream;
 import java.sql.Blob;
+import java.util.HashMap;
 
 
 public class createnewadd extends AppCompatActivity {
@@ -56,12 +59,6 @@ public class createnewadd extends AppCompatActivity {
     private Spinner categoryEdt, brandEdt;
     private EditText  milageEdt, capacityEdt, descriptionEdt,priceEdt, locationEdt;
     private Button btnPost;
-
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
-    AdsInfo adsInfo;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,56 +86,75 @@ public class createnewadd extends AppCompatActivity {
         locationEdt = findViewById(R.id.txtLocation);
         btnPost = findViewById(R.id.btnPostAd);
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("Ads");
+        try {
+            btnPost.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String categoryD = categoryEdt.getSelectedItem().toString().trim();
+                    String brandD = brandEdt.getSelectedItem().toString().trim();
+                    int mileageD = Integer.parseInt(milageEdt.getText().toString().trim());
+                    int capacityD = Integer.parseInt(capacityEdt.getText().toString().trim());
+                    String descriptionD  = descriptionEdt.getText().toString();
+                    int priceD = Integer.parseInt(priceEdt.getText().toString().trim());
+                    String locationD = locationEdt.getText().toString();
 
-        adsInfo = new AdsInfo();
-
-        btnPost = findViewById(R.id.btnPostAd);
-        btnPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String categoryD = categoryEdt.getSelectedItem().toString();
-                String brandD = brandEdt.getSelectedItem().toString();
-                int milageD = Integer.parseInt(milageEdt.getText().toString());
-                int capacityD = Integer.parseInt(capacityEdt.getText().toString());
-                String descriptionD = descriptionEdt.getText().toString();
-                int priceD = Integer.parseInt(priceEdt.getText().toString());
-                String locationD = locationEdt.getText().toString();
-
-                if (TextUtils.isEmpty(categoryD) && TextUtils.isEmpty(brandD) && milageD == 0 && capacityD == 0 && TextUtils.isEmpty(descriptionD) && priceD == 0 && TextUtils.isEmpty(locationD)){
-                    Toast.makeText(createnewadd.this, "Fill all TextBoxs",Toast.LENGTH_SHORT).show();
-                }else {
-                    addTextDataFirebase(categoryD, brandD, milageD, capacityD, descriptionD, priceD, locationD);
+                    if (categoryD.isEmpty()){
+                        Toast.makeText(createnewadd.this,"cannot be Empty",Toast.LENGTH_SHORT).show();
+                    }
+                    if (brandD.isEmpty()){
+                        Toast.makeText(createnewadd.this,"cannot be Empty",Toast.LENGTH_SHORT).show();
+                    }
+                    if (mileageD == 0){
+                        Toast.makeText(createnewadd.this,"cannot be Empty",Toast.LENGTH_SHORT).show();
+                    }
+                    if (capacityD == 0){
+                        Toast.makeText(createnewadd.this,"cannot be Empty",Toast.LENGTH_SHORT).show();
+                    }
+                    if (descriptionD.isEmpty()){
+                        Toast.makeText(createnewadd.this,"cannot be Empty",Toast.LENGTH_SHORT).show();
+                    }
+                    if (priceD == 0){
+                        Toast.makeText(createnewadd.this,"cannot be Empty",Toast.LENGTH_SHORT).show();
+                    }
+                    if (locationD.isEmpty()){
+                        Toast.makeText(createnewadd.this,"cannot be Empty",Toast.LENGTH_SHORT).show();
+                    }
+                    addQuoteToDB(categoryD, brandD, mileageD, capacityD, descriptionD, priceD, locationD);
                 }
-
-            }
-        });
-
+            });
+        }catch (Exception e){
+            Toast.makeText(createnewadd.this,"Error",Toast.LENGTH_SHORT).show();
+        }
     }
 
-    private void addTextDataFirebase(String categoryD, String brandD, int milageD, int capacityD, String descriptionD, int priceD, String locationD){
-        adsInfo.setaCategory(categoryD);
-        adsInfo.setaBrand(brandD);
-        adsInfo.setaMilage(milageD);
-        adsInfo.setaCapacity(capacityD);
-        adsInfo.setaDescription(descriptionD);
-        adsInfo.setaPrice(priceD);
-        adsInfo.setaLocation(locationD);
+    private void addQuoteToDB(String categoryD, String brandD, int mileageD, int capacityD, String descriptionD, int priceD, String locationD) {
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("ads");
+        String key = dbRef.push().getKey();
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                databaseReference.setValue(adsInfo);
-                Toast.makeText(createnewadd.this, "Post Ad", Toast.LENGTH_SHORT).show();
-            }
+        HashMap<String, Object> dbHashMap = new HashMap<>();
+        dbHashMap.put("category", categoryD);
+        dbHashMap.put("brand", brandD);
+        dbHashMap.put("mileage", mileageD);
+        dbHashMap.put("capacity", capacityD);
+        dbHashMap.put("description", descriptionD);
+        dbHashMap.put("price", priceD);
+        dbHashMap.put("location", locationD);
 
+        dbRef.child(key).setValue(dbHashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(createnewadd.this, "Fail to add data", Toast.LENGTH_SHORT).show();
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(createnewadd.this, "Ad post successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(createnewadd.this, "Ad post successfully Failed", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
+
+
+
+
 
 
 
