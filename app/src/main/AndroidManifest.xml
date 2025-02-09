@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,20 +16,21 @@
         android:theme="@style/Theme.WheelDeal"
         tools:targetApi="31">
         <activity
-            android:name=".chatsNew"
+            android:name=".activity_please_login_screen"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".chatsNew"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".chatsNew"
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".chatsNew" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".search"
             android:exported="false" />
         <activity
             android:name=".openchat"
-            android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".chatsNew"-->
-<!--            android:exported="false" />-->
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".chatsNew" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".createnewadd"
             android:exported="false" />
@@ -59,13 +61,12 @@
         <activity
             android:name=".getStarted2"
             android:exported="false" />
-
-        <activity android:name=".Edit_number"
-            android:exported="true"/>
-
-        <activity android:name=".Edit_name"
-            android:exported="true"/>
-
+        <activity
+            android:name=".Edit_number"
+            android:exported="true" />
+        <activity
+            android:name=".Edit_name"
+            android:exported="true" />
         <activity
             android:name=".getStartedActivity1"
             android:exported="false" />

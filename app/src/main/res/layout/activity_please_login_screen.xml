@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity_please_login_screen">
+
+    <TextView
+        android:id="@+id/textView41"
+        android:layout_width="203dp"
+        android:layout_height="76dp"
+        android:text="To perform this action you need to login first."
+        android:textAlignment="center"
+        android:textColor="#0D0C0C"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.352" />
+
+    <Button
+        android:id="@+id/btnloginpage"
+        android:layout_width="290dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="92dp"
+        android:background="@drawable/rounded_button"
+        android:text="Login"
+        android:textColor="#FFF"
+        app:layout_constraintEnd_toEndOf="@+id/textView41"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="@+id/textView41"
+        app:layout_constraintTop_toBottomOf="@+id/textView41" />
+
+    <ImageView
+        android:id="@+id/imgAddPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/group_1000006147" />
+
+    <ImageView
+        android:id="@+id/imgChats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/imgAddPost"
+        app:layout_constraintStart_toEndOf="@+id/imgAddPost"
+        app:layout_constraintTop_toTopOf="@+id/imgAddPost"
+        app:srcCompat="@drawable/group_1000006158" />
+
+    <ImageView
+        android:id="@+id/imgSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/imgAddPost"
+        app:layout_constraintEnd_toStartOf="@+id/imgAddPost"
+        app:layout_constraintTop_toTopOf="@+id/imgAddPost"
+        app:srcCompat="@drawable/group_1000006146" />
+
+    <ImageView
+        android:id="@+id/imgHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/imgSearch"
+        app:layout_constraintEnd_toStartOf="@+id/imgSearch"
+        app:layout_constraintTop_toTopOf="@+id/imgSearch"
+        app:srcCompat="@drawable/group_1000006145" />
+
+    <ImageView
+        android:id="@+id/imgProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/imgChats"
+        app:layout_constraintStart_toEndOf="@+id/imgChats"
+        app:layout_constraintTop_toTopOf="@+id/imgChats"
+        app:srcCompat="@drawable/group_1000006149" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
