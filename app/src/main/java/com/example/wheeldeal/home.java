@@ -4,164 +4,114 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
-import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Objects;
+import java.util.List;
 
 public class home extends AppCompatActivity {
 
-    ListView addListView;
-
-    String addTitle[] = {"test1","test3","test4","test1","test2","test3","test4","test1","test2","test3"};
-
-    int addImage[] = {
-            R.drawable.caricon,
-            R.drawable.caricon,
-            R.drawable.caricon,
-            R.drawable.caricon,
-            R.drawable.caricon,
-            R.drawable.caricon,
-            R.drawable.caricon,
-            R.drawable.caricon,
-            R.drawable.caricon,
-            R.drawable.caricon,
-            R.drawable.caricon,
-            R.drawable.caricon,
-            R.drawable.caricon,
-            R.drawable.caricon,
-            };
+    private RecyclerView recyclerView;
+    private AdsAdapter adsAdapter;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home);
 
-        addListView = findViewById(R.id.addList);
+        navigation();
 
-        ArrayList<HashMap<String, Object>> list = new ArrayList<>();
+        recyclerView = findViewById(R.id.allAdsRecycleView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        for (int i = 0; i < addTitle.length; i++){
-            HashMap<String, Object> map = new HashMap<>();
-            map.put("addTitle", addTitle[i]);
-            map.put("addImage",addImage[i]);
-            list.add(map);
-        }
-        String[] from = {"addTitle","addImage"};
+        adsAdapter = new AdsAdapter();
+        recyclerView.setAdapter(adsAdapter);
 
-        int to[] = {R.id.addTitle, R.id.addImg};
+        databaseReference = FirebaseDatabase.getInstance().getReference("Ads");
 
-        SimpleAdapter simpleAdapter = new SimpleAdapter(getApplicationContext(),list, R.layout.list_view_s, from, to);
+        fetchAdsFromFirebase();
+    }
 
-        addListView.setAdapter(simpleAdapter);
+    private void fetchAdsFromFirebase() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<AdsInfo> adsInfos = new ArrayList<>();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String category = dataSnapshot.child("category").getValue(String.class);
+                    String brand = dataSnapshot.child("brand").getValue(String.class);
+                    Long milageLong = dataSnapshot.child("milage").getValue(Long.class);
+                    Long capacityLong = dataSnapshot.child("capacity").getValue(Long.class);
+                    String description = dataSnapshot.child("description").getValue(String.class);
+                    Long priceLong = dataSnapshot.child("price").getValue(Long.class);
+                    String area = dataSnapshot.child("location").getValue(String.class);
 
+                    int milage = milageLong != null ? milageLong.intValue() : 0;
+                    int capacity = capacityLong != null ? capacityLong.intValue() : 0;
+                    int price = priceLong != null ? priceLong.intValue() : 0;
 
+                    adsInfos.add(new AdsInfo(category, brand, milage, capacity, description, price, area));
+                }
+                adsAdapter.setAdsInfoList(adsInfos);
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Log or handle the error
+            }
+        });
+    }
 
-
-
-
-
-
-
-        //addView
-//        ImageView img = findViewById(R.id.imgPost);
-//
-//        img.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), addView.class);
-//                startActivity(intent);
-//            }
-//        });
-
-        //buttonCategory
+    private void navigation() {
+        // buttonCategory
         ImageView imgCategory = findViewById(R.id.btnCategory);
-
-        imgCategory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent categoryIntent = new Intent(getApplicationContext(), category.class);
-                startActivity(categoryIntent);
-            }
+        imgCategory.setOnClickListener(v -> {
+            Intent categoryIntent = new Intent(getApplicationContext(), category.class);
+            startActivity(categoryIntent);
         });
 
-        //Add Post
+        // Add Post
         ImageView imgAddPost = findViewById(R.id.imgAddPost);
-
-        imgAddPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-                Intent intent;
-                if (currentUser != null){
-                    // User is logged in; go to the createnewadd page.
-                    intent = new Intent(getApplicationContext(), createnewadd.class);
-                }
-                else {
-                    // User is not logged in; redirect to the login page.
-                    intent = new Intent(getApplicationContext(), activity_please_login_screen.class);
-                }
-                startActivity(intent);
-
-//                Intent addPostIntent = new Intent(getApplicationContext(), createnewadd.class);
-//                startActivity(addPostIntent);
-            }
+        imgAddPost.setOnClickListener(v -> {
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            Intent intent = currentUser != null ?
+                    new Intent(getApplicationContext(), createnewadd.class) :
+                    new Intent(getApplicationContext(), activity_please_login_screen.class);
+            startActivity(intent);
         });
 
-
-        //buttonHome
-//        ImageView imgHomeButton = findViewById(R.id.imgHome);
-//
-//        imgHomeButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent homeButtonIntent = new Intent(getApplicationContext(), home.class);
-//                startActivity(homeButtonIntent);
-//            }
-//        });
-
-        //buttonSearch
+        // buttonSearch
         ImageView imgSearchButton = findViewById(R.id.imgSearch);
-
-        imgSearchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent searchButtonIntent = new Intent(getApplicationContext(), search.class);
-                startActivity(searchButtonIntent);
-            }
+        imgSearchButton.setOnClickListener(v -> {
+            Intent searchButtonIntent = new Intent(getApplicationContext(), search.class);
+            startActivity(searchButtonIntent);
         });
 
-        //buttonChat
+        // buttonChat
         ImageView imgChatbutton = findViewById(R.id.imgChats);
-
-        imgChatbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent chatButtonIntent = new Intent(getApplicationContext(), chatsNew.class);
-                startActivity(chatButtonIntent);
-            }
+        imgChatbutton.setOnClickListener(v -> {
+            Intent chatButtonIntent = new Intent(getApplicationContext(), chatsNew.class);
+            startActivity(chatButtonIntent);
         });
 
-        //button profile
+        // button profile
         ImageView imgProfileButton = findViewById(R.id.imgProfile);
-
-        imgProfileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent profileButtonIntent = new Intent(getApplicationContext(), profile.class);
-                startActivity(profileButtonIntent);
-            }
+        imgProfileButton.setOnClickListener(v -> {
+            Intent profileButtonIntent = new Intent(getApplicationContext(), profile.class);
+            startActivity(profileButtonIntent);
         });
-
     }
 }
