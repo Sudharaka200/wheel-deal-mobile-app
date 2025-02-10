@@ -29,8 +29,7 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsViewHolder> {
 
         holder.titleTV.setText(adsInfo.getaBrand());
         holder.areaTV.setText(adsInfo.getaLocation());
-        holder.miniTV.setText("Capacity: " + adsInfo.getaCapacity() + " CC");// Capacity displayed as a string
-        holder.miniTV.setText("Milage: " + adsInfo.getaMilage());
+        holder.miniTV.setText("Capacity: " + adsInfo.getaCapacity() + " CC | Milage: " + adsInfo.getaMilage());// Capacity displayed as a string
         holder.priceTV.setText("Price:" + adsInfo.getaPrice() + ".00");  // Formatting price nicely
     }
 

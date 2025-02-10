@@ -92,7 +92,8 @@ public class createnewadd extends AppCompatActivity {
                 public void onClick(View v) {
                     String categoryD = categoryEdt.getSelectedItem().toString().trim();
                     String brandD = brandEdt.getSelectedItem().toString().trim();
-                    int mileageD = Integer.parseInt(milageEdt.getText().toString().trim());
+                    int mileageD = !milageEdt.getText().toString().trim().isEmpty() ?
+                            Integer.parseInt(milageEdt.getText().toString().trim()) : 0;
                     int capacityD = Integer.parseInt(capacityEdt.getText().toString().trim());
                     String descriptionD  = descriptionEdt.getText().toString();
                     int priceD = Integer.parseInt(priceEdt.getText().toString().trim());
