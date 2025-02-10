@@ -2,6 +2,7 @@ package com.example.wheeldeal;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -30,6 +31,7 @@ public class profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.profile);
+        navigation();
 
         // Initialize Firebase
         mAuth = FirebaseAuth.getInstance();
@@ -48,7 +50,9 @@ public class profile extends AppCompatActivity {
 
         btnDeleteAccount.setOnClickListener(v -> confirmDeleteAccount());
 
+    }
 
+    public void navigation(){
         //buttonHome
         ImageView imgHomeButton = findViewById(R.id.imgHome);
 
@@ -105,7 +109,34 @@ public class profile extends AppCompatActivity {
             }
         });
 
+        ImageView btnCreateNewAdd = findViewById(R.id.createAdvertisment);
+        btnCreateNewAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent createAddIntent = new Intent(getApplicationContext(), createnewadd.class);
+                startActivity(createAddIntent);
+            }
+        });
+
+        ImageView btnMyAds = findViewById(R.id.btnMyAds);
+        btnMyAds.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myAdsIntent = new Intent(getApplicationContext(), Myads.class);
+                startActivity(myAdsIntent);
+            }
+        });
+
+        ImageView btnFavList = findViewById(R.id.btnFavouriteList);
+        btnFavList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent favListIntent = new Intent(getApplicationContext(), favourites.class);
+                startActivity(favListIntent);
+            }
+        });
     }
+
     public void loadUserProfile(){
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {
