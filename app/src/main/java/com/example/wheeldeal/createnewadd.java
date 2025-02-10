@@ -77,6 +77,12 @@ public class createnewadd extends AppCompatActivity {
 
 
         //Insert DB
+        insertTxtDB();
+
+    }
+
+
+    private void insertTxtDB(){
         categoryEdt = findViewById(R.id.cmbVehicleCategory);
         brandEdt = findViewById(R.id.cmbVehicleBrand);
         milageEdt = findViewById(R.id.txtMilage);
@@ -122,10 +128,16 @@ public class createnewadd extends AppCompatActivity {
                     }
                     addQuoteToDB(categoryD, brandD, mileageD, capacityD, descriptionD, priceD, locationD);
                 }
+<<<<<<< Updated upstream
             });
         }catch (Exception e){
             Toast.makeText(createnewadd.this,"Error",Toast.LENGTH_SHORT).show();
         }
+=======
+
+            }
+        });
+>>>>>>> Stashed changes
     }
 
     private void addQuoteToDB(String categoryD, String brandD, int mileageD, int capacityD, String descriptionD, int priceD, String locationD) {
