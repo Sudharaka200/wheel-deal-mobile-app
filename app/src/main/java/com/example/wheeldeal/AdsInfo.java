@@ -9,6 +9,16 @@ public class AdsInfo {
     private int aPrice;
     private String aLocation;
 
+    public AdsInfo(String aCategory, String aBrand, int milage, int aCapacity, String aDescription, int aPrice, String aLocation) {
+        this.aCategory = aCategory;
+        this.aBrand = aBrand;
+        Milage = milage;
+        this.aCapacity = aCapacity;
+        this.aDescription = aDescription;
+        this.aPrice = aPrice;
+        this.aLocation = aLocation;
+    }
+
     public String getaCategory() {
         return aCategory;
     }
