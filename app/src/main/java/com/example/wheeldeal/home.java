@@ -43,6 +43,7 @@ public class home extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("ads");
 
         fetchAdsFromFirebase();
+
     }
 
     private void fetchAdsFromFirebase() {
@@ -74,6 +75,7 @@ public class home extends AppCompatActivity {
             }
         });
     }
+
 
     private void navigation() {
         // buttonCategory
