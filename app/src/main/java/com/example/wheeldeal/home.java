@@ -40,7 +40,7 @@ public class home extends AppCompatActivity {
         adsAdapter = new AdsAdapter();
         recyclerView.setAdapter(adsAdapter);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Ads");
+        databaseReference = FirebaseDatabase.getInstance().getReference("ads");
 
         fetchAdsFromFirebase();
     }
@@ -51,7 +51,7 @@ public class home extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 List<AdsInfo> adsInfos = new ArrayList<>();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    String category = dataSnapshot.child("category").getValue(String.class);
+                    String category = dataSnapshot.child("category").exists() ? dataSnapshot.child("category").getValue(String.class) : "Unknown";
                     String brand = dataSnapshot.child("brand").getValue(String.class);
                     Long milageLong = dataSnapshot.child("milage").getValue(Long.class);
                     Long capacityLong = dataSnapshot.child("capacity").getValue(Long.class);
