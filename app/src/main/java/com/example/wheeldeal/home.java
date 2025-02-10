@@ -24,7 +24,7 @@ import java.util.List;
 public class home extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private AdsAdapter adsAdapter;
+    public AdsAdapter adsAdapter;
     private DatabaseReference databaseReference;
 
     @Override

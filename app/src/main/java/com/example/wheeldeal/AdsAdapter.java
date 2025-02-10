@@ -13,7 +13,7 @@ import java.util.List;
 
 public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsViewHolder> {
 
-    private List<AdsInfo> adsInfoList = new ArrayList<>();
+    public List<AdsInfo> adsInfoList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -29,8 +29,9 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsViewHolder> {
 
         holder.titleTV.setText(adsInfo.getaBrand());
         holder.areaTV.setText(adsInfo.getaLocation());
-        holder.miniTV.setText("Capacity: " + adsInfo.getaCapacity() + " CC");  // Capacity displayed as a string
-        holder.priceTV.setText("Price: $" + adsInfo.getaPrice());  // Formatting price nicely
+        holder.miniTV.setText("Capacity: " + adsInfo.getaCapacity() + " CC");// Capacity displayed as a string
+        holder.miniTV.setText("Milage: " + adsInfo.getaMilage());
+        holder.priceTV.setText("Price:" + adsInfo.getaPrice() + ".00");  // Formatting price nicely
     }
 
     @Override
@@ -45,7 +46,7 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsViewHolder> {
         }
     }
 
-    static class AdsViewHolder extends RecyclerView.ViewHolder {
+    public static class AdsViewHolder extends RecyclerView.ViewHolder {
 
         TextView titleTV, areaTV, miniTV, priceTV;
 
