@@ -1,9 +1,12 @@
 package com.example.wheeldeal;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import android.widget.AdapterView;
+
 import android.widget.ImageView;
+
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,11 +14,26 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
 import com.bumptech.glide.Glide;
 
-public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsViewHolder> {
 
-    public List<AdsInfo> adsInfoList = new ArrayList<>();
+public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsViewHolder> {
+    private List<AdsInfo> adsInfoList;
+    private OnItemClickListener listener;
+    //private AdapterView.OnItemClickListener listener;
+    public interface OnItemClickListener {
+        void onItemClick(AdsInfo adsInfo);
+    }
+    // Constructor to initialize the adapter
+    public AdsAdapter() {
+        this.adsInfoList = new ArrayList<>(); // Initialize with an empty list
+    }
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
 
     @NonNull
     @Override
@@ -29,10 +47,22 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsViewHolder> {
     public void onBindViewHolder(@NonNull AdsViewHolder holder, int position) {
         AdsInfo adsInfo = adsInfoList.get(position);
 
+
+
+        holder.titleTV.setText(adsInfo.getaBrand());
+
         holder.titleTV.setText(adsInfo.getaBrand() +" , " + adsInfo.getaModel());
+
         holder.areaTV.setText(adsInfo.getaLocation());
         holder.miniTV.setText("Capacity: " + adsInfo.getaCapacity() + " CC "+ "  |  "+ adsInfo.getaMilage()+" Km");// Capacity displayed as a string
         holder.priceTV.setText("Price:" + adsInfo.getaPrice() + ".00");  // Formatting price nicely
+
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(adsInfo);
+            }
+        });
 
         if (adsInfo.getImageUrl() != null && !adsInfo.getImageUrl().isEmpty()) {
             Glide.with(holder.itemView.getContext())
@@ -41,6 +71,7 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsViewHolder> {
         } else {
             holder.imageView.setImageResource(R.drawable.images_23);
         }
+
     }
 
 
@@ -53,6 +84,9 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsViewHolder> {
         if (adsInfo != null) {
             this.adsInfoList = adsInfo;
             notifyDataSetChanged();
+        }
+        else{
+            this.adsInfoList = new ArrayList<>();
         }
     }
 

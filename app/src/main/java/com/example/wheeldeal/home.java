@@ -44,6 +44,18 @@ public class home extends AppCompatActivity {
 
         fetchAdsFromFirebase();
 
+        adsAdapter.setOnItemClickListener(adsInfo -> {
+            Intent intent = new Intent(home.this, addView.class);
+            intent.putExtra("category", adsInfo.getaCategory());
+            intent.putExtra("brand", adsInfo.getaBrand());
+            intent.putExtra("milage", adsInfo.getaMilage());
+            intent.putExtra("capacity", adsInfo.getaCapacity());
+            intent.putExtra("description", adsInfo.getaDescription());
+            intent.putExtra("price", adsInfo.getaPrice());
+            intent.putExtra("area", adsInfo.getaLocation());
+            startActivity(intent);
+        });
+
     }
 
     private void fetchAdsFromFirebase() {
