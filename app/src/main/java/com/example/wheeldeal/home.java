@@ -2,8 +2,8 @@ package com.example.wheeldeal;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +31,9 @@ public class home extends AppCompatActivity {
     private List<AdsInfo> adsInfoList;
 
     SearchView searchView;
+    FirebaseAuth auth;
+    TextView emailCheck;
+    FirebaseUser user;
 
 
     @Override
@@ -39,6 +42,18 @@ public class home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         navigation();
+
+        //user check
+        auth = FirebaseAuth.getInstance();
+        emailCheck = findViewById(R.id.LoginCheckEmail);
+        user = auth.getCurrentUser();
+        if (user == null){
+
+        }
+        else {
+            emailCheck.setText(user.getEmail());
+        }
+
 
         searchView = findViewById(R.id.searchView);
         searchView.clearFocus();
@@ -77,6 +92,10 @@ public class home extends AppCompatActivity {
             intent.putExtra("area", adsInfo.getaLocation());
             startActivity(intent);
         });
+    }
+
+    public void checkUser(){
+
     }
 
 

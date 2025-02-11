@@ -2,6 +2,7 @@ package com.example.wheeldeal;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -63,7 +64,7 @@ public class createAccount extends AppCompatActivity {
         buttonCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String ufirstname ,ulastname, uemail, uaddress, upassword, uphonenumber;
+                String ufirstname ,ulastname, uemail, uaddress, upassword, uphonenumber ,androidID;
 //                int uphonenumber;
 
                 ufirstname = String.valueOf(firstname.getText());
@@ -73,6 +74,9 @@ public class createAccount extends AppCompatActivity {
                 uphonenumber = String.valueOf(phonenumber.getText());
                 uaddress = String.valueOf(address.getText());
                 upassword = String.valueOf(password.getText());
+
+                 androidID = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+
 
                 if (TextUtils.isEmpty(ufirstname)){
                     Toast.makeText(createAccount.this, "First Name is Empty !" , Toast.LENGTH_SHORT).show();
@@ -111,6 +115,7 @@ public class createAccount extends AppCompatActivity {
                                     userData.put("lastName", ulastname);
                                     userData.put("phoneNumber", uphonenumber);
                                     userData.put("address", uaddress);
+                                    userData.put("adnroidID",androidID);
 
                                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                                     db.collection("users").document(user.getUid())

@@ -4,18 +4,45 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class chatsNew extends AppCompatActivity {
 
+    FirebaseAuth auth;
+    TextView emailCheck;
+    FirebaseUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_chats_new);
 
+        //user check
+        auth = FirebaseAuth.getInstance();
+//        emailCheck = findViewById(R.id.LoginCheckEmail);
+        user = auth.getCurrentUser();
+        if (user == null){
+                Intent loginIntent = new Intent(getApplicationContext(), activity_please_login_screen.class);
+                startActivity(loginIntent);
+        }
+        else {
+//            emailCheck.setText(user.getEmail());
+        }
+
+        navigation();
+
+
+
+    }
+
+    private void navigation(){
         //buttonHome
         ImageView imgHomeButton = findViewById(R.id.imgHome);
 
@@ -59,6 +86,5 @@ public class chatsNew extends AppCompatActivity {
                 startActivity(profileButtonIntent);
             }
         });
-
     }
 }
