@@ -3,7 +3,8 @@ package com.example.wheeldeal;
 public class AdsInfo {
     private String aCategory;
     private String aBrand;
-    private int Milage;
+    private String aModel;
+    private int aMilage;
     private int aCapacity;
     private String aDescription;
     private int aPrice;
@@ -11,10 +12,11 @@ public class AdsInfo {
 
     private String imageUrl;
 
-    public AdsInfo(String aCategory, String aBrand, int milage, int aCapacity, String aDescription, int aPrice, String aLocation, String imageUrl) {
+    public AdsInfo(String aCategory, String aBrand,String aModel, int amilage, int aCapacity, String aDescription, int aPrice, String aLocation, String imageUrl) {
         this.aCategory = aCategory;
         this.aBrand = aBrand;
-        Milage = milage;
+        this.aModel= aModel;
+        this.aMilage = amilage;
         this.aCapacity = aCapacity;
         this.aDescription = aDescription;
         this.aPrice = aPrice;
@@ -39,12 +41,18 @@ public class AdsInfo {
     }
 
     public int getaMilage() {
-        return Milage;
+        return aMilage;
     }
 
     public void setaMilage(int aMilage) {
-        this.Milage = aMilage;
+        this.aMilage = aMilage;
     }
+
+    public String getaModel() {
+        return aModel;
+    }
+
+    public void setaModel(String aModel){this.aModel = aModel;}
 
     public int getaCapacity() {
         return aCapacity;

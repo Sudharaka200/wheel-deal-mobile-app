@@ -29,9 +29,9 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsViewHolder> {
     public void onBindViewHolder(@NonNull AdsViewHolder holder, int position) {
         AdsInfo adsInfo = adsInfoList.get(position);
 
-        holder.titleTV.setText(adsInfo.getaBrand());
+        holder.titleTV.setText(adsInfo.getaBrand() +" , " + adsInfo.getaModel());
         holder.areaTV.setText(adsInfo.getaLocation());
-        holder.miniTV.setText("Capacity: " + adsInfo.getaCapacity() + " CC | Milage: " + adsInfo.getaMilage());// Capacity displayed as a string
+        holder.miniTV.setText("Capacity: " + adsInfo.getaCapacity() + " CC "+ "  |  "+ adsInfo.getaMilage()+" Km");// Capacity displayed as a string
         holder.priceTV.setText("Price:" + adsInfo.getaPrice() + ".00");  // Formatting price nicely
 
         if (adsInfo.getImageUrl() != null && !adsInfo.getImageUrl().isEmpty()) {
