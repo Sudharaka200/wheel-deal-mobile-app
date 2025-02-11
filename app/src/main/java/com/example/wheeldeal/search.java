@@ -30,16 +30,15 @@ public class search extends AppCompatActivity {
             }
         });
 
-        //buttonSearch
-//        ImageView imgSearchButton = findViewById(R.id.imgSearch);
-//
-//        imgSearchButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent searchButtonIntent = new Intent(getApplicationContext(), search.class);
-//                startActivity(searchButtonIntent);
-//            }
-//        });
+        // Add Post
+        ImageView imgAddPost = findViewById(R.id.imgAddPost);
+        imgAddPost.setOnClickListener(v -> {
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            Intent intent = currentUser != null ?
+                    new Intent(getApplicationContext(), createnewadd.class) :
+                    new Intent(getApplicationContext(), activity_please_login_screen.class);
+            startActivity(intent);
+        });
 
         //buttonChat
         ImageView imgChatbutton = findViewById(R.id.imgChats);
