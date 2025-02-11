@@ -65,7 +65,7 @@ public class createnewadd extends AppCompatActivity {
         });
     }
 
-    private void uploadMultipleImages() {
+    private void uploadMultipleImages(String adKey) {
         StorageReference storageReference = FirebaseStorage.getInstance().getReference("ads_images");
 
         Uri[] imageUris = {imageUri1, imageUri2, imageUri3};
@@ -78,20 +78,17 @@ public class createnewadd extends AppCompatActivity {
 
             imageRef.putFile(imageUris[i])
                     .addOnSuccessListener(taskSnapshot -> imageRef.getDownloadUrl()
-                            .addOnSuccessListener(uri -> {
-                                String downloadUrl = uri.toString();
-                                saveImageUrlToDatabase(downloadUrl);
-                            }))
-                    .addOnFailureListener(e -> {
-                        Toast.makeText(createnewadd.this, "Failed to upload image: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    });
+                            .addOnSuccessListener(uri -> saveImageUrlToDatabase(adKey, uri.toString())))
+                    .addOnFailureListener(e ->
+                        Toast.makeText(createnewadd.this, "Failed to upload image: " + e.getMessage(), Toast.LENGTH_SHORT).show()
+                    );
         }
     }
 
-    private void saveImageUrlToDatabase(String imageUrl) {
-        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("ads_images");
-        String key = dbRef.push().getKey();
-        dbRef.child(key).setValue(imageUrl)
+    private void saveImageUrlToDatabase(String adKey, String imageUrl) {
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("ads").child(adKey).child("images");
+        String imageKey = dbRef.push().getKey();
+        dbRef.child(imageKey).setValue(imageUrl)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         Toast.makeText(createnewadd.this, "Succesfull posted", Toast.LENGTH_SHORT).show();
@@ -130,7 +127,7 @@ public class createnewadd extends AppCompatActivity {
         dbRef.child(key).setValue(dbHashMap).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
 //                Toast.makeText(createnewadd.this, "Ad posted successfully", Toast.LENGTH_SHORT).show();
-                uploadMultipleImages();
+                uploadMultipleImages(key);
 
                 Button btnsuccesfull = findViewById(R.id.btnPostAd);
                 btnsuccesfull.setOnClickListener(new View.OnClickListener() {
