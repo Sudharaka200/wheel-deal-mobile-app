@@ -8,6 +8,9 @@ import android.widget.ImageView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class search extends AppCompatActivity {
 
     @Override
@@ -40,13 +43,12 @@ public class search extends AppCompatActivity {
 
         //buttonChat
         ImageView imgChatbutton = findViewById(R.id.imgChats);
-
-        imgChatbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent chatButtonIntent = new Intent(getApplicationContext(), chatsNew.class);
-                startActivity(chatButtonIntent);
-            }
+        imgChatbutton.setOnClickListener(v -> {
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            Intent intent = currentUser != null ?
+                    new Intent(getApplicationContext(), chatsNew.class) :
+                    new Intent(getApplicationContext(), activity_please_login_screen.class);
+            startActivity(intent);
         });
 
         //button profile

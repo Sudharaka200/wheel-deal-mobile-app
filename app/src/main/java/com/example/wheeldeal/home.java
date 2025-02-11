@@ -105,8 +105,11 @@ public class home extends AppCompatActivity {
         // buttonChat
         ImageView imgChatbutton = findViewById(R.id.imgChats);
         imgChatbutton.setOnClickListener(v -> {
-            Intent chatButtonIntent = new Intent(getApplicationContext(), chatsNew.class);
-            startActivity(chatButtonIntent);
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            Intent intent = currentUser != null ?
+                    new Intent(getApplicationContext(), chatsNew.class):
+                    new Intent(getApplicationContext(), activity_please_login_screen.class);
+            startActivity(intent);
         });
 
         // button profile
