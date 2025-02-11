@@ -16,7 +16,6 @@ import com.google.firebase.auth.FirebaseUser;
 public class chatsNew extends AppCompatActivity {
 
     FirebaseAuth auth;
-    TextView emailCheck;
     FirebaseUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,15 +25,12 @@ public class chatsNew extends AppCompatActivity {
 
         //user check
         auth = FirebaseAuth.getInstance();
-//        emailCheck = findViewById(R.id.LoginCheckEmail);
         user = auth.getCurrentUser();
         if (user == null){
                 Intent loginIntent = new Intent(getApplicationContext(), activity_please_login_screen.class);
                 startActivity(loginIntent);
         }
-        else {
-//            emailCheck.setText(user.getEmail());
-        }
+
 
         navigation();
 

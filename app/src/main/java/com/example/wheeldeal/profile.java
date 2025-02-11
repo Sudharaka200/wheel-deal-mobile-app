@@ -25,6 +25,8 @@ public class profile extends AppCompatActivity {
     FirebaseFirestore db;
     View imgLogout, btnDeleteAccount;
 
+    FirebaseAuth auth;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,14 @@ public class profile extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.profile);
         navigation();
+
+        //user check
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        if (user == null){
+            Intent loginIntent = new Intent(getApplicationContext(), activity_please_login_screen.class);
+            startActivity(loginIntent);
+        }
 
         // Initialize Firebase
         mAuth = FirebaseAuth.getInstance();
