@@ -7,6 +7,7 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,12 +28,20 @@ public class home extends AppCompatActivity {
     public AdsAdapter adsAdapter;
     private DatabaseReference databaseReference;
 
+    private List<AdsInfo> adsInfoList;
+
+    SearchView searchView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
         navigation();
+
+        searchView = findViewById(R.id.searchView);
+        searchView.clearFocus();
 
         recyclerView = findViewById(R.id.allAdsRecycleView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -43,6 +52,19 @@ public class home extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("ads");
 
         fetchAdsFromFirebase();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchList(newText);
+                return true;
+            }
+        });
 
         adsAdapter.setOnItemClickListener(adsInfo -> {
             Intent intent = new Intent(home.this, addView.class);
@@ -55,14 +77,14 @@ public class home extends AppCompatActivity {
             intent.putExtra("area", adsInfo.getaLocation());
             startActivity(intent);
         });
-
     }
+
 
     private void fetchAdsFromFirebase() {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<AdsInfo> adsInfos = new ArrayList<>();
+                adsInfoList = new ArrayList<>();  // Initialize the list
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     String category = dataSnapshot.child("category").exists() ? dataSnapshot.child("category").getValue(String.class) : "Unknown";
                     String brand = dataSnapshot.child("brand").getValue(String.class);
@@ -77,17 +99,17 @@ public class home extends AppCompatActivity {
                     int capacity = capacityLong != null ? capacityLong.intValue() : 0;
                     int price = priceLong != null ? priceLong.intValue() : 0;
 
-                    //first Image URL
                     String firstImageUrl = "";
-                    if(dataSnapshot.child("images").exists()){
-                        for (DataSnapshot imageSnapshot : dataSnapshot.child("images").getChildren()){
+                    if (dataSnapshot.child("images").exists()) {
+                        for (DataSnapshot imageSnapshot : dataSnapshot.child("images").getChildren()) {
                             firstImageUrl = imageSnapshot.getValue(String.class);
+                            break;
                         }
                     }
 
-                    adsInfos.add(new AdsInfo(category, brand, model, milage, capacity, description, price, area, firstImageUrl));
+                    adsInfoList.add(new AdsInfo(category, brand, model, milage, capacity, description, price, area, firstImageUrl));
                 }
-                adsAdapter.setAdsInfoList(adsInfos);
+                adsAdapter.setAdsInfoList(adsInfoList);
             }
 
             @Override
@@ -95,7 +117,35 @@ public class home extends AppCompatActivity {
                 // Log or handle the error
             }
         });
+
+
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchList(newText);
+                return true;
+            }
+        });
     }
+
+    public void searchList(String text) {
+        ArrayList<AdsInfo> searchList = new ArrayList<>();
+        for (AdsInfo adsInfo : adsInfoList) {
+            if ((adsInfo.getaModel() != null && adsInfo.getaModel().toLowerCase().contains(text.toLowerCase())) ||
+                    (adsInfo.getaBrand() != null && adsInfo.getaBrand().toLowerCase().contains(text.toLowerCase()))) {
+                searchList.add(adsInfo);
+            }
+        }
+        adsAdapter.searchAdsList(searchList);
+    }
+
+
 
 
     private void navigation() {

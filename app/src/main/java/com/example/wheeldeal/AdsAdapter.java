@@ -1,4 +1,5 @@
 package com.example.wheeldeal;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +16,13 @@ import com.bumptech.glide.Glide;
 public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsViewHolder> {
     private List<AdsInfo> adsInfoList;
     private OnItemClickListener listener;
-    //private AdapterView.OnItemClickListener listener;
+    private Context context;
     public interface OnItemClickListener {
         void onItemClick(AdsInfo adsInfo);
     }
     // Constructor to initialize the adapter
     public AdsAdapter() {
-        this.adsInfoList = new ArrayList<>(); // Initialize with an empty list
+        this.adsInfoList = new ArrayList<>();
     }
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
@@ -73,15 +74,21 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsViewHolder> {
         return adsInfoList.size();
     }
 
+    public void searchAdsList(ArrayList<AdsInfo>searchList){
+        adsInfoList = searchList;
+        notifyDataSetChanged();
+    }
+
     public void setAdsInfoList(List<AdsInfo> adsInfo) {
         if (adsInfo != null) {
-            this.adsInfoList = adsInfo;
+            this.adsInfoList = new ArrayList<>(adsInfo);
+            notifyDataSetChanged();
+        } else {
+            this.adsInfoList = new ArrayList<>();
             notifyDataSetChanged();
         }
-        else{
-            this.adsInfoList = new ArrayList<>();
-        }
     }
+
 
     public static class AdsViewHolder extends RecyclerView.ViewHolder {
 
