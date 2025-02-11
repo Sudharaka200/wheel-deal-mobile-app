@@ -48,7 +48,7 @@
             app:layout_constraintHorizontal_bias="0.402"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6"
-            app:layout_constraintVertical_bias="0.177" />
+            app:layout_constraintVertical_bias="0.021" />
 
         <EditText
             android:id="@+id/txtLastName"
@@ -133,7 +133,7 @@
             app:layout_constraintHorizontal_bias="0.402"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtPassword"
-            app:layout_constraintVertical_bias="0.162" />
+            app:layout_constraintVertical_bias="0.201" />
 
         <TextView
             android:id="@+id/textView8"
@@ -160,17 +160,6 @@
             app:layout_constraintStart_toEndOf="@+id/textView8"
             app:layout_constraintTop_toTopOf="@+id/textView8"
             app:layout_constraintVertical_bias="0.0" />
-
-        <ImageView
-            android:id="@+id/imgTakePhoto"
-            android:layout_width="79dp"
-            android:layout_height="75dp"
-            app:layout_constraintBottom_toTopOf="@+id/txtFirstName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.066"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6"
-            app:srcCompat="@drawable/group_1000006160" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
