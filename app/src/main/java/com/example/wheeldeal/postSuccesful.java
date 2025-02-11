@@ -23,7 +23,7 @@ public class postSuccesful extends AppCompatActivity {
         btnGoMyAds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goMyAdsIntent = new Intent(getApplicationContext(), Myads.class);
+                Intent goMyAdsIntent = new Intent(getApplicationContext(), MyAdsView.class);
                 startActivity(goMyAdsIntent);
             }
         });
