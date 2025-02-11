@@ -4,10 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
-
-
 
     <application
         android:allowBackup="true"
@@ -19,6 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WheelDeal"
         tools:targetApi="31">
+        <activity
+            android:name=".MyAdsView"
+            android:exported="false" />
+        <activity
+            android:name=".myAdsView"
+            android:exported="false" />
         <activity
             android:name=".postSuccesful"
             android:exported="false" />

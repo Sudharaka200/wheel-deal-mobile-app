@@ -141,7 +141,7 @@ public class profile extends AppCompatActivity {
         btnMyAds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myAdsIntent = new Intent(getApplicationContext(), Myads.class);
+                Intent myAdsIntent = new Intent(getApplicationContext(), MyAdsView.class);
                 startActivity(myAdsIntent);
             }
         });
