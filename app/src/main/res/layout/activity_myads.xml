@@ -11,18 +11,22 @@
         android:id="@+id/imagView1"
         android:layout_width="431dp"
         android:layout_height="101dp"
-        app:srcCompat="@drawable/rectangle_3578"
-        tools:layout_editor_absoluteX="-10dp"
-        tools:layout_editor_absoluteY="-3dp" />
+        android:layout_marginBottom="630dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rectangle_3578" />
 
     <ImageView
         android:id="@+id/btnBack01"
         android:layout_width="54dp"
         android:layout_height="44dp"
         android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imagView1"
         app:layout_constraintStart_toStartOf="@+id/imagView1"
-        app:srcCompat="@drawable/chevron_left"
-        tools:layout_editor_absoluteY="29dp" />
+        app:layout_constraintTop_toTopOf="@+id/imagView1"
+        app:srcCompat="@drawable/chevron_left" />
 
     <TextView
         android:id="@+id/txtBack3"
@@ -31,90 +35,9 @@
         android:text="My Adds"
         android:textColor="#FFF"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="38dp" />
-
-    <ImageView
-        android:id="@+id/imgPost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imagView1"
-        app:layout_constraintVertical_bias="0.16"
-        app:srcCompat="@drawable/rectangle_3502" />
-
-    <ImageView
-        android:id="@+id/imgAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/imgPost"
-        app:layout_constraintEnd_toEndOf="@+id/imgPost"
-        app:layout_constraintHorizontal_bias="0.053"
-        app:layout_constraintStart_toStartOf="@+id/imgPost"
-        app:layout_constraintTop_toTopOf="@+id/imgPost"
-        app:srcCompat="@drawable/caricon" />
-
-    <TextView
-        android:id="@+id/textView40"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2020 BMW 3 Series"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imgAdd"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.132"
-        app:layout_constraintStart_toEndOf="@+id/imgAdd"
-        app:layout_constraintTop_toTopOf="@+id/imgAdd"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/txtView49"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Status : Pending"
-        android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imgPost"
-        app:layout_constraintEnd_toEndOf="@+id/textView40"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView40"
-        app:layout_constraintTop_toBottomOf="@+id/textView40"
-        app:layout_constraintVertical_bias="0.403" />
-
-    <TextView
-        android:id="@+id/textView42"
-        android:layout_width="177dp"
-        android:layout_height="16dp"
-        android:layout_marginTop="29dp"
-        android:text="Used | 145,000 KM | Fuel Type : Hybrid"
-        android:textSize="12dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView40"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView40"
-        app:layout_constraintTop_toTopOf="@+id/imgPost" />
-
-    <ImageView
-        android:id="@+id/imageView47"
-        android:layout_width="42dp"
-        android:layout_height="34dp"
-        android:tint="#0F0E0E"
-        app:srcCompat="@android:drawable/ic_menu_delete"
-        tools:layout_editor_absoluteX="353dp"
-        tools:layout_editor_absoluteY="161dp" />
-
-    <Button
-        android:id="@+id/btnedit01"
-        android:layout_width="98dp"
-        android:layout_height="28dp"
-        android:background="@drawable/rounded_button"
-        android:text="Edit"
-        android:textColor="#FFF"
-        android:textSize="08sp"
-        tools:layout_editor_absoluteX="186dp"
-        tools:layout_editor_absoluteY="171dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack01"
+        app:layout_constraintStart_toEndOf="@+id/btnBack01"
+        app:layout_constraintTop_toTopOf="@+id/btnBack01" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

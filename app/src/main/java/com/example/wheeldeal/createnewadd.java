@@ -94,7 +94,7 @@ public class createnewadd extends AppCompatActivity {
         dbRef.child(key).setValue(imageUrl)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Toast.makeText(createnewadd.this, "Image URL saved to database!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(createnewadd.this, "Succesfull posted", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(createnewadd.this, "Failed to save image URL.", Toast.LENGTH_SHORT).show();
                     }
@@ -129,8 +129,18 @@ public class createnewadd extends AppCompatActivity {
 
         dbRef.child(key).setValue(dbHashMap).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                Toast.makeText(createnewadd.this, "Ad posted successfully", Toast.LENGTH_SHORT).show();
-                uploadMultipleImages();  // Upload images after posting the ad
+//                Toast.makeText(createnewadd.this, "Ad posted successfully", Toast.LENGTH_SHORT).show();
+                uploadMultipleImages();
+
+                Button btnsuccesfull = findViewById(R.id.btnPostAd);
+                btnsuccesfull.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent adSuccesfullIntent = new Intent(getApplicationContext(), postSuccesful.class);
+                        startActivity(adSuccesfullIntent);
+                    }
+                });
+
             } else {
                 Toast.makeText(createnewadd.this, "Ad post failed", Toast.LENGTH_SHORT).show();
             }
