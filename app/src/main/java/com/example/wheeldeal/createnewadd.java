@@ -35,7 +35,7 @@ public class createnewadd extends AppCompatActivity {
     Uri imageUri1, imageUri2, imageUri3;
 
     private Spinner categoryEdt, brandEdt;
-    private EditText milageEdt, capacityEdt, descriptionEdt, priceEdt, locationEdt;
+    private EditText modelEdt, milageEdt, capacityEdt, descriptionEdt, priceEdt, locationEdt;
     private Button btnPost;
 
     @Override
@@ -46,6 +46,7 @@ public class createnewadd extends AppCompatActivity {
         // Initialize UI elements
         categoryEdt = findViewById(R.id.cmbVehicleCategory);
         brandEdt = findViewById(R.id.cmbVehicleBrand);
+        modelEdt = findViewById(R.id.txtModel);
         milageEdt = findViewById(R.id.txtMilage);
         capacityEdt = findViewById(R.id.txtCapacity);
         descriptionEdt = findViewById(R.id.txtDescription);
@@ -101,7 +102,8 @@ public class createnewadd extends AppCompatActivity {
     private void insertTxtDB() {
         String categoryD = categoryEdt.getSelectedItem().toString().trim();
         String brandD = brandEdt.getSelectedItem().toString().trim();
-        int mileageD = !milageEdt.getText().toString().trim().isEmpty() ? Integer.parseInt(milageEdt.getText().toString().trim()) : 0;
+        String modelD = modelEdt.getText().toString().trim();
+        int mileageD = Integer.parseInt(milageEdt.getText().toString().trim());
         int capacityD = Integer.parseInt(capacityEdt.getText().toString().trim());
         String descriptionD = descriptionEdt.getText().toString();
         int priceD = Integer.parseInt(priceEdt.getText().toString().trim());
@@ -118,7 +120,8 @@ public class createnewadd extends AppCompatActivity {
         HashMap<String, Object> dbHashMap = new HashMap<>();
         dbHashMap.put("category", categoryD);
         dbHashMap.put("brand", brandD);
-        dbHashMap.put("mileage", mileageD);
+        dbHashMap.put("model", modelD);
+        dbHashMap.put("milage", mileageD);
         dbHashMap.put("capacity", capacityD);
         dbHashMap.put("description", descriptionD);
         dbHashMap.put("price", priceD);
