@@ -1,6 +1,7 @@
 package com.example.wheeldeal;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -31,6 +32,7 @@ public class MyAdsView extends AppCompatActivity {
     TextView emailCheck;
     FirebaseUser user;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,8 +49,6 @@ public class MyAdsView extends AppCompatActivity {
             emailCheck.setText(user.getEmail());
         }
 
-        
-
 
     }
 
@@ -56,5 +56,5 @@ public class MyAdsView extends AppCompatActivity {
 
 
 
-    }
+
 }
