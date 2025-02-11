@@ -165,7 +165,9 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             app:queryBackground="@color/white"
-            app:queryHint="Search Here ..." />
+            app:queryHint="Search Here ..."
+            android:background="@drawable/ic_launcher_background"
+            app:closeIcon="@drawable/search_view_bg"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/allAdsRecycleView"
