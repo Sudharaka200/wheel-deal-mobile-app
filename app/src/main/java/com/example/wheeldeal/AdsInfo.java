@@ -9,7 +9,9 @@ public class AdsInfo {
     private int aPrice;
     private String aLocation;
 
-    public AdsInfo(String aCategory, String aBrand, int milage, int aCapacity, String aDescription, int aPrice, String aLocation) {
+    private String imageUrl;
+
+    public AdsInfo(String aCategory, String aBrand, int milage, int aCapacity, String aDescription, int aPrice, String aLocation, String imageUrl) {
         this.aCategory = aCategory;
         this.aBrand = aBrand;
         Milage = milage;
@@ -17,6 +19,7 @@ public class AdsInfo {
         this.aDescription = aDescription;
         this.aPrice = aPrice;
         this.aLocation = aLocation;
+        this.imageUrl = imageUrl;
     }
 
     public String getaCategory() {
@@ -73,5 +76,13 @@ public class AdsInfo {
 
     public void setaLocation(String aLocation) {
         this.aLocation = aLocation;
+    }
+
+    public String getImageUrl(){
+        return  imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

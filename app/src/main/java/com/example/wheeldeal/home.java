@@ -64,7 +64,15 @@ public class home extends AppCompatActivity {
                     int capacity = capacityLong != null ? capacityLong.intValue() : 0;
                     int price = priceLong != null ? priceLong.intValue() : 0;
 
-                    adsInfos.add(new AdsInfo(category, brand, milage, capacity, description, price, area));
+                    //first Image URL
+                    String firstImageUrl = "";
+                    if(dataSnapshot.child("images").exists()){
+                        for (DataSnapshot imageSnapshot : dataSnapshot.child("images").getChildren()){
+                            firstImageUrl = imageSnapshot.getValue(String.class);
+                        }
+                    }
+
+                    adsInfos.add(new AdsInfo(category, brand, milage, capacity, description, price, area, firstImageUrl));
                 }
                 adsAdapter.setAdsInfoList(adsInfos);
             }
