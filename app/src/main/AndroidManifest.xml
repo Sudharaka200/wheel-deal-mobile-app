@@ -16,6 +16,9 @@
         android:theme="@style/Theme.WheelDeal"
         tools:targetApi="31">
         <activity
+            android:name=".postSuccesful"
+            android:exported="false" />
+        <activity
             android:name=".activity_please_login_screen"
             android:exported="false" />
         <activity

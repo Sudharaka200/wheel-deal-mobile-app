@@ -35,7 +35,7 @@ public class createnewadd extends AppCompatActivity {
     Uri imageUri1, imageUri2, imageUri3;
 
     private Spinner categoryEdt, brandEdt;
-    private EditText milageEdt, capacityEdt, descriptionEdt, priceEdt, locationEdt;
+    private EditText modelEdt, milageEdt, capacityEdt, descriptionEdt, priceEdt, locationEdt;
     private Button btnPost;
 
     @Override
@@ -46,6 +46,7 @@ public class createnewadd extends AppCompatActivity {
         // Initialize UI elements
         categoryEdt = findViewById(R.id.cmbVehicleCategory);
         brandEdt = findViewById(R.id.cmbVehicleBrand);
+        modelEdt = findViewById(R.id.txtModel);
         milageEdt = findViewById(R.id.txtMilage);
         capacityEdt = findViewById(R.id.txtCapacity);
         descriptionEdt = findViewById(R.id.txtDescription);
@@ -65,7 +66,7 @@ public class createnewadd extends AppCompatActivity {
         });
     }
 
-    private void uploadMultipleImages() {
+    private void uploadMultipleImages(String adKey) {
         StorageReference storageReference = FirebaseStorage.getInstance().getReference("ads_images");
 
         Uri[] imageUris = {imageUri1, imageUri2, imageUri3};
@@ -78,23 +79,20 @@ public class createnewadd extends AppCompatActivity {
 
             imageRef.putFile(imageUris[i])
                     .addOnSuccessListener(taskSnapshot -> imageRef.getDownloadUrl()
-                            .addOnSuccessListener(uri -> {
-                                String downloadUrl = uri.toString();
-                                saveImageUrlToDatabase(downloadUrl);
-                            }))
-                    .addOnFailureListener(e -> {
-                        Toast.makeText(createnewadd.this, "Failed to upload image: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    });
+                            .addOnSuccessListener(uri -> saveImageUrlToDatabase(adKey, uri.toString())))
+                    .addOnFailureListener(e ->
+                        Toast.makeText(createnewadd.this, "Failed to upload image: " + e.getMessage(), Toast.LENGTH_SHORT).show()
+                    );
         }
     }
 
-    private void saveImageUrlToDatabase(String imageUrl) {
-        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("ads_images");
-        String key = dbRef.push().getKey();
-        dbRef.child(key).setValue(imageUrl)
+    private void saveImageUrlToDatabase(String adKey, String imageUrl) {
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("ads").child(adKey).child("images");
+        String imageKey = dbRef.push().getKey();
+        dbRef.child(imageKey).setValue(imageUrl)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Toast.makeText(createnewadd.this, "Image URL saved to database!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(createnewadd.this, "Succesfull posted", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(createnewadd.this, "Failed to save image URL.", Toast.LENGTH_SHORT).show();
                     }
@@ -104,7 +102,8 @@ public class createnewadd extends AppCompatActivity {
     private void insertTxtDB() {
         String categoryD = categoryEdt.getSelectedItem().toString().trim();
         String brandD = brandEdt.getSelectedItem().toString().trim();
-        int mileageD = !milageEdt.getText().toString().trim().isEmpty() ? Integer.parseInt(milageEdt.getText().toString().trim()) : 0;
+        String modelD = modelEdt.getText().toString().trim();
+        int mileageD = Integer.parseInt(milageEdt.getText().toString().trim());
         int capacityD = Integer.parseInt(capacityEdt.getText().toString().trim());
         String descriptionD = descriptionEdt.getText().toString();
         int priceD = Integer.parseInt(priceEdt.getText().toString().trim());
@@ -121,7 +120,8 @@ public class createnewadd extends AppCompatActivity {
         HashMap<String, Object> dbHashMap = new HashMap<>();
         dbHashMap.put("category", categoryD);
         dbHashMap.put("brand", brandD);
-        dbHashMap.put("mileage", mileageD);
+        dbHashMap.put("model", modelD);
+        dbHashMap.put("milage", mileageD);
         dbHashMap.put("capacity", capacityD);
         dbHashMap.put("description", descriptionD);
         dbHashMap.put("price", priceD);
@@ -129,8 +129,18 @@ public class createnewadd extends AppCompatActivity {
 
         dbRef.child(key).setValue(dbHashMap).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                Toast.makeText(createnewadd.this, "Ad posted successfully", Toast.LENGTH_SHORT).show();
-                uploadMultipleImages();  // Upload images after posting the ad
+//                Toast.makeText(createnewadd.this, "Ad posted successfully", Toast.LENGTH_SHORT).show();
+                uploadMultipleImages(key);
+
+                Button btnsuccesfull = findViewById(R.id.btnPostAd);
+                btnsuccesfull.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent adSuccesfullIntent = new Intent(getApplicationContext(), postSuccesful.class);
+                        startActivity(adSuccesfullIntent);
+                    }
+                });
+
             } else {
                 Toast.makeText(createnewadd.this, "Ad post failed", Toast.LENGTH_SHORT).show();
             }

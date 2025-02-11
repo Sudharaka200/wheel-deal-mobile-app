@@ -66,6 +66,7 @@ public class home extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     String category = dataSnapshot.child("category").exists() ? dataSnapshot.child("category").getValue(String.class) : "Unknown";
                     String brand = dataSnapshot.child("brand").getValue(String.class);
+                    String model = dataSnapshot.child("model").getValue(String.class);
                     Long milageLong = dataSnapshot.child("milage").getValue(Long.class);
                     Long capacityLong = dataSnapshot.child("capacity").getValue(Long.class);
                     String description = dataSnapshot.child("description").getValue(String.class);
@@ -76,7 +77,15 @@ public class home extends AppCompatActivity {
                     int capacity = capacityLong != null ? capacityLong.intValue() : 0;
                     int price = priceLong != null ? priceLong.intValue() : 0;
 
-                    adsInfos.add(new AdsInfo(category, brand, milage, capacity, description, price, area));
+                    //first Image URL
+                    String firstImageUrl = "";
+                    if(dataSnapshot.child("images").exists()){
+                        for (DataSnapshot imageSnapshot : dataSnapshot.child("images").getChildren()){
+                            firstImageUrl = imageSnapshot.getValue(String.class);
+                        }
+                    }
+
+                    adsInfos.add(new AdsInfo(category, brand, model, milage, capacity, description, price, area, firstImageUrl));
                 }
                 adsAdapter.setAdsInfoList(adsInfos);
             }
