@@ -63,7 +63,7 @@
             app:layout_constraintVertical_bias="0.016" />
 
         <ImageView
-            android:id="@+id/btnmortorBike"
+            android:id="@+id/btnMortorBike"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -79,10 +79,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/btnmortorBike"
+            app:layout_constraintEnd_toEndOf="@+id/btnMortorBike"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/btnmortorBike"
-            app:layout_constraintTop_toBottomOf="@+id/btnmortorBike"
+            app:layout_constraintStart_toStartOf="@+id/btnMortorBike"
+            app:layout_constraintTop_toBottomOf="@+id/btnMortorBike"
             app:layout_constraintVertical_bias="0.02"
             app:srcCompat="@drawable/rectangle_3463" />
 
@@ -208,11 +208,11 @@
             android:id="@+id/imageView28"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/btnmortorBike"
-            app:layout_constraintEnd_toEndOf="@+id/btnmortorBike"
+            app:layout_constraintBottom_toBottomOf="@+id/btnMortorBike"
+            app:layout_constraintEnd_toEndOf="@+id/btnMortorBike"
             app:layout_constraintHorizontal_bias="0.27"
-            app:layout_constraintStart_toStartOf="@+id/btnmortorBike"
-            app:layout_constraintTop_toTopOf="@+id/btnmortorBike"
+            app:layout_constraintStart_toStartOf="@+id/btnMortorBike"
+            app:layout_constraintTop_toTopOf="@+id/btnMortorBike"
             app:srcCompat="@drawable/bicycle" />
 
         <TextView
@@ -222,7 +222,7 @@
             android:text="MortorBike"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@+id/imageView28"
-            app:layout_constraintEnd_toEndOf="@+id/btnmortorBike"
+            app:layout_constraintEnd_toEndOf="@+id/btnMortorBike"
             app:layout_constraintHorizontal_bias="0.301"
             app:layout_constraintStart_toEndOf="@+id/imageView28"
             app:layout_constraintTop_toTopOf="@+id/imageView28"

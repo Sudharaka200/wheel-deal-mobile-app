@@ -5,7 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
+        tools:ignore="ProtectedPermissions" />
 
     <application
         android:allowBackup="true"
@@ -21,7 +22,7 @@
             android:name=".MyAdsView"
             android:exported="false" />
         <activity
-            android:name=".myAdsView"
+            android:name=".CategoryAds"
             android:exported="false" />
         <activity
             android:name=".postSuccesful"
@@ -31,17 +32,13 @@
             android:exported="false" />
         <activity
             android:name=".chatsNew"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".chatsNew" -->
-        <!-- android:exported="false" /> -->
+            android:exported="false" />
         <activity
             android:name=".search"
             android:exported="false" />
         <activity
             android:name=".openchat"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".chatsNew" -->
-        <!-- android:exported="false" /> -->
+            android:exported="false" />
         <activity
             android:name=".createnewadd"
             android:exported="false" />
