@@ -3,6 +3,7 @@ package com.example.wheeldeal;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -17,6 +18,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -41,6 +43,8 @@ public class createnewadd extends AppCompatActivity {
     private EditText modelEdt, milageEdt, capacityEdt, descriptionEdt, priceEdt, locationEdt;
     private Button btnPost;
 
+    Button btnGetLiveLocation;
+
     FirebaseAuth auth;
     TextView emailCheck;
     FirebaseUser user;
@@ -61,6 +65,7 @@ public class createnewadd extends AppCompatActivity {
         priceEdt = findViewById(R.id.txtPrice);
         locationEdt = findViewById(R.id.txtLocation);
         btnPost = findViewById(R.id.btnPostAd);
+        btnGetLiveLocation = findViewById(R.id.btnChooseLocation);
 
         addImage1 = findViewById(R.id.imgAdd1);
         addImage2 = findViewById(R.id.imgAdd2);
@@ -82,6 +87,19 @@ public class createnewadd extends AppCompatActivity {
         else {
             emailCheck.setText(user.getEmail());
         }
+    }
+
+    private void getLocation(){
+        btnGetLiveLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                    if (ActivityCompat.checkSelfPermission(createnewadd.this, Manifest.permission.))
+                }else {
+                    requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION},);
+                }
+            }
+        });
     }
 
     private void uploadMultipleImages(String adKey) {
