@@ -26,6 +26,18 @@
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/rectangle_3578" />
 
+        <TextView
+            android:id="@+id/txtAddLocationView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:text="TextView"
+            android:textColor="#FFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+            app:layout_constraintStart_toEndOf="@+id/txtBack"
+            app:layout_constraintTop_toTopOf="@+id/imageView11"
+            app:layout_constraintVertical_bias="0.39" />
+
         <ImageView
             android:id="@+id/btnBack"
             android:layout_width="48dp"
@@ -183,28 +195,33 @@
             app:layout_constraintTop_toTopOf="@+id/btnCall"
             app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/txtAddLocationView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="128dp"
-            android:text="TextView"
-            android:textColor="#FFFF"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView11"
-            app:layout_constraintStart_toEndOf="@+id/txtBack"
-            app:layout_constraintTop_toTopOf="@+id/imageView11"
-            app:layout_constraintVertical_bias="0.39" />
+        <ImageView
+            android:id="@+id/btnFavourite"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="184dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView15"
+            app:layout_constraintStart_toEndOf="@+id/textView15"
+            app:layout_constraintTop_toTopOf="@+id/textView15"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/bookmark__1_" />
 
         <TextView
-            android:id="@+id/txtGetMyLocation"
+            android:id="@+id/textView65"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:text="TextView"
-            android:textColor="#FFFF"
-            app:layout_constraintEnd_toEndOf="@+id/txtAddLocationView"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/txtAddLocationView"
-            app:layout_constraintTop_toBottomOf="@+id/txtAddLocationView" />
+            tools:layout_editor_absoluteX="272dp"
+            tools:layout_editor_absoluteY="50dp" />
+
+        <TextView
+            android:id="@+id/textView66"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#FFF"
+            tools:layout_editor_absoluteX="211dp"
+            tools:layout_editor_absoluteY="450dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
