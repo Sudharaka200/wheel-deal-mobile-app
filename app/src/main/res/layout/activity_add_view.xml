@@ -62,80 +62,20 @@
             app:layout_constraintVertical_bias="0.023"
             app:srcCompat="@drawable/images_23" />
 
-        <ImageView
-            android:id="@+id/imageView15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.11"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView14"
-            app:layout_constraintVertical_bias="0.036"
-            app:srcCompat="@drawable/images_24" />
-
-        <ImageView
-            android:id="@+id/imageView16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="256dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView15"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.882"
-            app:layout_constraintStart_toEndOf="@+id/imageView15"
-            app:layout_constraintTop_toTopOf="@+id/imageView15"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/images_24" />
-
-        <ImageView
-            android:id="@+id/imageView17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView16"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.083"
-            app:layout_constraintStart_toEndOf="@+id/imageView16"
-            app:layout_constraintTop_toTopOf="@+id/imageView16"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/images_24" />
-
-        <ImageView
-            android:id="@+id/imageView18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView17"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.129"
-            app:layout_constraintStart_toEndOf="@+id/imageView17"
-            app:layout_constraintTop_toTopOf="@+id/imageView17"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/images_24" />
-
-        <ImageView
-            android:id="@+id/imageView20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView18"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.263"
-            app:layout_constraintStart_toEndOf="@+id/imageView18"
-            app:layout_constraintTop_toTopOf="@+id/imageView18"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/images_24" />
-
         <TextView
             android:id="@+id/textView15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="216dp"
             android:text="2020 BMW 3 Series"
             android:textColor="@color/black"
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.078"
+            app:layout_constraintHorizontal_bias="0.062"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView15"
-            app:layout_constraintVertical_bias="0.07" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView14"
+            app:layout_constraintVertical_bias="0.144" />
 
         <TextView
             android:id="@+id/textView16"
@@ -204,10 +144,10 @@
             app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnLocation"
             android:layout_width="363dp"
             android:layout_height="45dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="32dp"
             android:background="@drawable/rounded_button"
             android:text="Location"
             android:textColor="#FFF"
@@ -217,29 +157,29 @@
             app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
         <Button
-            android:id="@+id/btncancel22"
+            android:id="@+id/btnCall"
             android:layout_width="180dp"
             android:layout_height="45dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/rounded_button"
             android:text="Call"
             android:textColor="#FFF"
-            app:layout_constraintEnd_toEndOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="@+id/btnLocation"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/button"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
+            app:layout_constraintStart_toStartOf="@+id/btnLocation"
+            app:layout_constraintTop_toBottomOf="@+id/btnLocation" />
 
         <Button
-            android:id="@+id/button4"
-            android:layout_width="180dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="12dp"
+            android:id="@+id/btnChat"
+            android:layout_width="173dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="8dp"
             android:background="@drawable/rounded_button"
             android:text="Chat"
             android:textColor="#FFF"
-            app:layout_constraintBottom_toBottomOf="@+id/btncancel22"
-            app:layout_constraintStart_toEndOf="@+id/btncancel22"
-            app:layout_constraintTop_toTopOf="@+id/btncancel22"
+            app:layout_constraintBottom_toBottomOf="@+id/btnCall"
+            app:layout_constraintStart_toEndOf="@+id/btnCall"
+            app:layout_constraintTop_toTopOf="@+id/btnCall"
             app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

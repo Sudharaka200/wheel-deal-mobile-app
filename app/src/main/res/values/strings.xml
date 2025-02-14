@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">WheelDeal</string>
     <string name="profile">Profile</string>
+    <string name="my_map_api_key">AIzaSyCiKBXqthfZDtSKeX-dl6BLRR0uwiL2Hno</string>
+
     <string-array name="vehicleCategory">
         <item>Motor Bike</item>
         <item>Therewheelers</item>

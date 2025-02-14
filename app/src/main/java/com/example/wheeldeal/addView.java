@@ -57,6 +57,41 @@ public class addView extends AppCompatActivity {
             textView19.setText("Description"); // Description label
             textView28.setText(description); // Description text
         }
+        navigation();
+
+
+    }
+
+    public void navigation(){
+        Button buttonCall =  findViewById(R.id.btnCall);
+        buttonCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        Button buttonChat =  findViewById(R.id.btnChat);
+        buttonChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chatIntent = new Intent(getApplicationContext(), chatsNew.class);
+                startActivity(chatIntent);
+            }
+        });
+
+        Button buttonLocation =  findViewById(R.id.btnLocation);
+        buttonLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent locationIntent = new Intent(getApplicationContext(), googleMap.class);
+                startActivity(locationIntent);
+            }
+        });
+
+
+
+
 
         ImageView btnBackbutton = findViewById(R.id.btnBack);
 
@@ -78,4 +113,6 @@ public class addView extends AppCompatActivity {
             }
         });
     }
+
+
 }

@@ -19,13 +19,13 @@ public class postSuccesful extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_post_succesful);
 
-        Button btnGoMyAds = findViewById(R.id.btnGoMyAds);
-        btnGoMyAds.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent goMyAdsIntent = new Intent(getApplicationContext(), Myads.class);
-                startActivity(goMyAdsIntent);
-            }
-        });
+//        Button btnGoMyAds = findViewById(R.id.btnGoMyAds);
+//        btnGoMyAds.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent goMyAdsIntent = new Intent(getApplicationContext(), Myads.class);
+//                startActivity(goMyAdsIntent);
+//            }
+//        });
     }
 }
