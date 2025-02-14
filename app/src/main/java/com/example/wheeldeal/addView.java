@@ -9,10 +9,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class addView extends AppCompatActivity {
 
@@ -56,11 +63,46 @@ public class addView extends AppCompatActivity {
             textView18.setText(String.valueOf(price)); // Price
             textView19.setText("Description"); // Description label
             textView28.setText(description); // Description text
+
+            TextView txtGetLocation = findViewById(R.id.txtGetLocationView);
+            txtGetLocation.setText(area);
         }
         navigation();
 
 
     }
+
+//    public void locationName(){
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference databaseReference = database.getReference("Ads");
+//
+//        TextView txtGetLocation = findViewById(R.id.txtGetLocationView);
+//        if (area =! null){
+//            String userID = area.getUid;
+//
+//            DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference("Ads");
+//
+//            databaseReference1.addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                    if (snapshot.exists()){
+//                        String name = snapshot.child("location").getValue(String.class);
+//                        txtGetLocation.setText(location);
+//                    }else {
+//                        txtGetLocation.setText("Location not Found");
+//                    }
+//
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//
+//                }
+//            });
+//        }
+//
+//
+//    }
 
     public void navigation(){
         Button buttonCall =  findViewById(R.id.btnCall);
@@ -84,8 +126,10 @@ public class addView extends AppCompatActivity {
         buttonLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent locationIntent = new Intent(getApplicationContext(), googleMap.class);
-                startActivity(locationIntent);
+
+//                Intent locationIntent = new Intent(getApplicationContext(), googleMap.class);
+//                startActivity(locationIntent);
+
             }
         });
 
