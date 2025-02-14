@@ -46,51 +46,51 @@ public class googleMap extends AppCompatActivity implements OnMapReadyCallback {
     }
 
     private void getLastLocation() {
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-        ) != PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(
-                        this,
-                        Manifest.permission.ACCESS_COARSE_LOCATION
-                ) != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions(
-                    this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                    FINE_PERMISSION_CODE
-            );
-            return;
-        }
-
-        Task<Location> task = fusedLocationProviderClient.getLastLocation();
-        task.addOnSuccessListener(location -> {
-            if (location != null) {
-                currentLocation = location; // Store location
-                updateMapWithCurrentLocation(); // Update map if ready
-            } else {
-                Toast.makeText(this, "Location not available", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        if (ActivityCompat.checkSelfPermission(
+//                this,
+//                Manifest.permission.ACCESS_FINE_LOCATION
+//        ) != PackageManager.PERMISSION_GRANTED &&
+//                ActivityCompat.checkSelfPermission(
+//                        this,
+//                        Manifest.permission.ACCESS_COARSE_LOCATION
+//                ) != PackageManager.PERMISSION_GRANTED) {
+//
+//            ActivityCompat.requestPermissions(
+//                    this,
+//                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+//                    FINE_PERMISSION_CODE
+//            );
+//            return;
+//        }
+//
+//        Task<Location> task = fusedLocationProviderClient.getLastLocation();
+//        task.addOnSuccessListener(location -> {
+//            if (location != null) {
+//                currentLocation = location; // Store location
+//                updateMapWithCurrentLocation(); // Update map if ready
+//            } else {
+//                Toast.makeText(this, "Location not available", Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     private void updateMapWithCurrentLocation() {
-        if (myMap != null && currentLocation != null) {
-            LatLng currentLatLng = new LatLng(
-                    currentLocation.getLatitude(),
-                    currentLocation.getLongitude()
-            );
-            myMap.addMarker(new MarkerOptions()
-                    .position(currentLatLng)
-                    .title("Current Location"));
-            myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15));
-        }
+//        if (myMap != null && currentLocation != null) {
+//            LatLng currentLatLng = new LatLng(
+//                    currentLocation.getLatitude(),
+//                    currentLocation.getLongitude()
+//            );
+//            myMap.addMarker(new MarkerOptions()
+//                    .position(currentLatLng)
+//                    .title("Current Location"));
+//            myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15));
+//        }
     }
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
-        myMap = googleMap;
-        updateMapWithCurrentLocation(); // Update if location is already available
+//        myMap = googleMap;
+//        updateMapWithCurrentLocation(); // Update if location is already available
     }
 
     // Rest of your code...
