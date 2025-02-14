@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide;
 
 
 public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsViewHolder> {
-    private List<AdsInfo> adsInfoList;
+    private List<AdsInfo> adsInfoList = new ArrayList<>();
     private OnItemClickListener listener;
     private Context context;
     public interface OnItemClickListener {
@@ -28,7 +28,6 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsViewHolder> {
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
     }
-
 
     @NonNull
     @Override
@@ -50,7 +49,7 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsViewHolder> {
 
         holder.areaTV.setText(adsInfo.getaLocation());
         holder.miniTV.setText("Capacity: " + adsInfo.getaCapacity() + " CC "+ "  |  "+ adsInfo.getaMilage()+" Km");// Capacity displayed as a string
-        holder.priceTV.setText("Price:" + adsInfo.getaPrice() + ".00");  // Formatting price nicely
+        holder.priceTV.setText("Price:" + adsInfo.getaPrice() + ".00");
 
 
         holder.itemView.setOnClickListener(v -> {
@@ -80,17 +79,10 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsViewHolder> {
         notifyDataSetChanged();
     }
 
-    public void setAdsInfoList(List<AdsInfo> adsInfo) {
-        if (adsInfo != null) {
-            this.adsInfoList = new ArrayList<>(adsInfo);
-            notifyDataSetChanged();
-        } else {
-            this.adsInfoList = new ArrayList<>();
-            notifyDataSetChanged();
-        }
+    public void setAdsInfoList(List<AdsInfo> newAdsList) {
+        this.adsInfoList = newAdsList;
+        notifyDataSetChanged();
     }
-
-
     public static class AdsViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
