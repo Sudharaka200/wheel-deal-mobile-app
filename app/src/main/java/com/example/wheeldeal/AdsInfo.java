@@ -12,6 +12,9 @@ public class AdsInfo {
 
     private String imageUrl;
 
+    public AdsInfo() {
+    }
+
     public AdsInfo(String aCategory, String aBrand,String aModel, int amilage, int aCapacity, String aDescription, int aPrice, String aLocation, String imageUrl) {
         this.aCategory = aCategory;
         this.aBrand = aBrand;
