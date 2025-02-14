@@ -184,7 +184,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/txtGetLocationView"
+            android:id="@+id/txtAddLocationView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="128dp"
@@ -202,9 +202,9 @@
             android:layout_marginTop="16dp"
             android:text="TextView"
             android:textColor="#FFFF"
-            app:layout_constraintEnd_toEndOf="@+id/txtGetLocationView"
+            app:layout_constraintEnd_toEndOf="@+id/txtAddLocationView"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/txtGetLocationView"
-            app:layout_constraintTop_toBottomOf="@+id/txtGetLocationView" />
+            app:layout_constraintStart_toStartOf="@+id/txtAddLocationView"
+            app:layout_constraintTop_toBottomOf="@+id/txtAddLocationView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

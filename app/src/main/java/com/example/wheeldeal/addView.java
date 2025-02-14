@@ -1,31 +1,27 @@
 package com.example.wheeldeal;
 
-import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class addView extends AppCompatActivity {
 
     // Declare all the views
     private TextView txtCategory, txtBrand, txtMilage, txtCapacity, txtDescription, txtPrice, txtArea;
     private TextView txtBack, textView15, textView16, textView17, textView18, textView19, textView28;
+
+    TextView txtAddLocationD;
+    TextView txtMyLocationD;
+    Button btnLocationD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,13 +60,54 @@ public class addView extends AppCompatActivity {
             textView19.setText("Description"); // Description label
             textView28.setText(description); // Description text
 
-            TextView txtGetLocation = findViewById(R.id.txtGetLocationView);
+            TextView txtGetLocation = findViewById(R.id.txtAddLocationView);
             txtGetLocation.setText(area);
         }
         navigation();
+        googleMapLocation();
 
 
     }
+
+
+    public void googleMapLocation(){
+
+        txtAddLocationD =  findViewById(R.id.txtAddLocationView);
+        txtMyLocationD = findViewById(R.id.txtGetMyLocation);
+        btnLocationD =  findViewById(R.id.btnLocation);
+
+        btnLocationD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String txtAdLocation = txtAddLocationD.getText().toString().trim();
+                String txtMyLocation =  txtMyLocationD.getText().toString().trim();
+
+                if (txtAdLocation.isEmpty() || txtMyLocation.isEmpty()) {
+                    Toast.makeText(v.getContext(), "Your Location Not Found", Toast.LENGTH_SHORT).show();
+                } else {
+                    getDirections(txtMyLocation, txtAdLocation); // Corrected parameter order
+                }
+            }
+        });
+    }
+    private void getDirections(String from, String to) {
+        try {
+            Uri uri = Uri.parse("http://www.google.com/maps/dir/" + Uri.encode(from) + "/" + Uri.encode(to));
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            intent.setPackage("com.google.android.apps.maps");
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        } catch (ActivityNotFoundException exception) {
+            Uri uri = Uri.parse("http://play.google.com/store/apps/details?id=com.google.android.apps.maps");
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+    }
+
+
+
+
 
 //    public void locationName(){
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -20,6 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -37,6 +40,11 @@ public class createnewadd extends AppCompatActivity {
     private Spinner categoryEdt, brandEdt;
     private EditText modelEdt, milageEdt, capacityEdt, descriptionEdt, priceEdt, locationEdt;
     private Button btnPost;
+
+    FirebaseAuth auth;
+    TextView emailCheck;
+    FirebaseUser user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +72,16 @@ public class createnewadd extends AppCompatActivity {
         btnPost.setOnClickListener(v -> {
             insertTxtDB();
         });
+
+        auth = FirebaseAuth.getInstance();
+        emailCheck = findViewById(R.id.getloginEmail);
+        user = auth.getCurrentUser();
+        if (user == null){
+
+        }
+        else {
+            emailCheck.setText(user.getEmail());
+        }
     }
 
     private void uploadMultipleImages(String adKey) {
