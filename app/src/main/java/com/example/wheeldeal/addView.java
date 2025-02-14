@@ -36,19 +36,27 @@ import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.location.Priority;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class addView extends AppCompatActivity {
 
     // Declare all the views
-    private TextView txtCategory, txtBrand, txtMilage, txtCapacity, txtDescription, txtPrice, txtArea;
+//    TextView txtCategory, txtBrand, txtModel, txtMilage, txtCapacity, txtDescription, txtPrice, txtArea;
     private TextView txtBack, textView15, textView16, textView17, textView18, textView19, textView28;
 
     TextView txtAddLocationD;
     TextView txtMyLocationD;
     Button btnLocationD;
 
+    TextView modelFDB, descriptionFDB, areaFDB, priceFDB;
+
     private static final int REQUEST_CHECK_SETTINGS = 10001;
     private  LocationRequest locationRequest;
+
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+    favInfo favInfoObj;
 
 
     @Override
@@ -98,13 +106,22 @@ public class addView extends AppCompatActivity {
         locationRequest.setInterval(5000);
         locationRequest.setFastestInterval(2000);
 
+        //Map
         googleMapLocation();
 
-
-
+        //Favourite
+        addFavourite();
 
     }
 
+    private void addFavourite(){
+        modelFDB = findViewById(R.id.textView15);
+        descriptionFDB = findViewById(R.id.textView28);
+        areaFDB = findViewById(R.id.textView16);
+        priceFDB = findViewById(R.id.textView18);
+
+
+    }
 
     public void googleMapLocation() {
         txtAddLocationD = findViewById(R.id.txtAddLocationView);
