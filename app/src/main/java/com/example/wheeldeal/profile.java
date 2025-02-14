@@ -26,6 +26,7 @@ public class profile extends AppCompatActivity {
     View imgLogout, btnDeleteAccount;
 
     FirebaseAuth auth;
+    TextView emailCheck;
     FirebaseUser user;
 
     @Override
@@ -34,6 +35,8 @@ public class profile extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.profile);
         navigation();
+
+        emailCheck = findViewById(R.id.profileMail);
 
         //user check
         auth = FirebaseAuth.getInstance();
@@ -47,6 +50,17 @@ public class profile extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
+        if (user == null) {
+
+        } else {
+            emailCheck.setText(user.getEmail());
+        }
+        if (user == null) {
+
+            finish();
+        } else {
+            emailCheck.setText(user.getEmail());
+        }
 
         txtFullName = findViewById(R.id.textView48);
         txtPhone = findViewById(R.id.textProfilePhone);
@@ -141,10 +155,14 @@ public class profile extends AppCompatActivity {
         btnMyAds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myAdsIntent = new Intent(getApplicationContext(), MyAdsView.class);
-                startActivity(myAdsIntent);
+                Intent intent = new Intent(profile.this, MyAdsView.class);
+                startActivity(intent);
             }
         });
+
+        ImageView btnmyAds = findViewById(R.id.btnMyAds);
+        btnmyAds.setOnClickListener(v -> onMyAdsButtonClick(v));
+
 
         ImageView btnFavList = findViewById(R.id.btnFavouriteList);
         btnFavList.setOnClickListener(new View.OnClickListener() {
@@ -155,6 +173,19 @@ public class profile extends AppCompatActivity {
             }
         });
     }
+
+    public void onMyAdsButtonClick(View view) {
+
+        TextView profileMail = findViewById(R.id.profileMail);
+        String email = profileMail.getText().toString();
+
+        Intent intent = new Intent(profile.this, MyAdsView.class);
+        intent.putExtra("email", email);
+        startActivity(intent);
+
+
+    }
+
 
     public void loadUserProfile(){
         FirebaseUser user = mAuth.getCurrentUser();

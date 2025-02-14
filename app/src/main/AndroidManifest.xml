@@ -5,8 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
-        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"/>
 
 
 
@@ -74,6 +73,12 @@
             android:exported="true" />
         <activity
             android:name=".Edit_name"
+            android:exported="true" />
+        <activity
+            android:name=".CategoryAds"
+            android:exported="true" />
+        <activity
+            android:name=".MyAdsView"
             android:exported="true" />
         <activity
             android:name=".getStartedActivity1"

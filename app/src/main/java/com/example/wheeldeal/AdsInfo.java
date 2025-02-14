@@ -12,10 +12,12 @@ public class AdsInfo {
 
     private String imageUrl;
 
+    private String aEmail;
+
     public AdsInfo() {
     }
 
-    public AdsInfo(String aCategory, String aBrand,String aModel, int amilage, int aCapacity, String aDescription, int aPrice, String aLocation, String imageUrl) {
+    public AdsInfo(String aCategory, String aBrand, String aModel, int amilage, int aCapacity, String aDescription, int aPrice, String aLocation, String imageUrl, String aEmail) {
         this.aCategory = aCategory;
         this.aBrand = aBrand;
         this.aModel= aModel;
@@ -25,6 +27,15 @@ public class AdsInfo {
         this.aPrice = aPrice;
         this.aLocation = aLocation;
         this.imageUrl = imageUrl;
+        this.aEmail = aEmail;
+    }
+
+    public String getaEmail() {
+        return aEmail;
+    }
+
+    public void setaEmail(String aEmail) {
+        this.aEmail = aEmail;
     }
 
     public String getaCategory() {

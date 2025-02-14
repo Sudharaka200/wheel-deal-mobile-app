@@ -30,6 +30,20 @@
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/rectangle_3578" />
 
+        <TextView
+            android:id="@+id/profileMail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="TextView"
+            android:textColor="#FFF"
+            app:layout_constraintBottom_toBottomOf="@+id/imagView1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.793"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.56" />
+
         <ImageView
             android:id="@+id/imgAddPost"
             android:layout_width="wrap_content"
@@ -329,17 +343,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/btnDeleteAccount"
             app:layout_constraintStart_toEndOf="@+id/btnDeleteAccount"
             app:layout_constraintTop_toTopOf="@+id/btnDeleteAccount" />
-
-        <ImageView
-            android:id="@+id/imageView42"
-            android:layout_width="71dp"
-            android:layout_height="69dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView9"
-            app:layout_constraintEnd_toStartOf="@+id/btnProfileLogout"
-            app:layout_constraintHorizontal_bias="0.631"
-            app:layout_constraintStart_toEndOf="@+id/textView20"
-            app:layout_constraintTop_toTopOf="@+id/imageView9"
-            app:srcCompat="@drawable/group_1000006160" />
 
         <TextView
             android:id="@+id/textView20"
