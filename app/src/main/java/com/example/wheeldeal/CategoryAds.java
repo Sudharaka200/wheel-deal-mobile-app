@@ -34,13 +34,27 @@ public class CategoryAds extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private List<AdsInfo> adsInfoList = new ArrayList<>();
     private SearchView searchView;
-    private int minPrice = 10000, maxPrice = 100000000;
+    private int minPrice = 0, maxPrice = 100000000;
+    private String selectedCategory = "";
+
+    private TextView categoryText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.category_ads);
 
+        categoryText = findViewById(R.id.CategoryText); // Initialize the TextView
+
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("category")) {
+            selectedCategory = intent.getStringExtra("category");
+
+            // Update TextView with category name
+            categoryText.setText(selectedCategory);
+        }
+
+        // Initialize views
         minPriceSeekBar = findViewById(R.id.minPriceSeekBar);
         maxPriceSeekBar = findViewById(R.id.maxPriceSeekBar);
         minPriceLabel = findViewById(R.id.minPriceLabel);
@@ -49,26 +63,27 @@ public class CategoryAds extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewCtg);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
         databaseReference = FirebaseDatabase.getInstance().getReference("ads");
         adsAdapter = new AdsAdapter();
         recyclerView.setAdapter(adsAdapter);
 
-        fetchAdsFromFirebase();
+        fetchAdsFromFirebase(); // Fetch and filter ads by category
         setupSearchView();
         setupSeekBars();
         setupPriceInputs();
         navigation();
 
         adsAdapter.setOnItemClickListener(adsInfo -> {
-            Intent intent = new Intent(CategoryAds.this, addView.class);
-            intent.putExtra("category", adsInfo.getaCategory());
-            intent.putExtra("brand", adsInfo.getaBrand());
-            intent.putExtra("milage", adsInfo.getaMilage());
-            intent.putExtra("capacity", adsInfo.getaCapacity());
-            intent.putExtra("description", adsInfo.getaDescription());
-            intent.putExtra("price", adsInfo.getaPrice());
-            intent.putExtra("area", adsInfo.getaLocation());
-            startActivity(intent);
+            Intent adViewIntent = new Intent(CategoryAds.this, addView.class);
+            adViewIntent.putExtra("category", adsInfo.getaCategory());
+            adViewIntent.putExtra("brand", adsInfo.getaBrand());
+            adViewIntent.putExtra("milage", adsInfo.getaMilage());
+            adViewIntent.putExtra("capacity", adsInfo.getaCapacity());
+            adViewIntent.putExtra("description", adsInfo.getaDescription());
+            adViewIntent.putExtra("price", adsInfo.getaPrice());
+            adViewIntent.putExtra("area", adsInfo.getaLocation());
+            startActivity(adViewIntent);
         });
     }
 
@@ -113,7 +128,7 @@ public class CategoryAds extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
                     int value = Integer.parseInt(s.toString());
-                    if (value >= 10000 && value <= maxPriceSeekBar.getMax()) {
+                    if (value >= 1000 && value <= maxPriceSeekBar.getMax()) {
                         minPriceSeekBar.setProgress(value);
                         minPrice = value;
                         filterAds();
@@ -148,7 +163,7 @@ public class CategoryAds extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                adsInfoList = new ArrayList<>();  // Initialize the list
+                adsInfoList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     String category = dataSnapshot.child("category").exists() ? dataSnapshot.child("category").getValue(String.class) : "Unknown";
                     String brand = dataSnapshot.child("brand").getValue(String.class);
@@ -163,6 +178,12 @@ public class CategoryAds extends AppCompatActivity {
                     int capacity = capacityLong != null ? capacityLong.intValue() : 0;
                     int price = priceLong != null ? priceLong.intValue() : 0;
 
+                    if (selectedCategory.isEmpty() || selectedCategory.equalsIgnoreCase("All") || selectedCategory.equalsIgnoreCase(category)) {
+                        // Add the ad to the list
+                        AdsInfo ad = dataSnapshot.getValue(AdsInfo.class);
+                        adsInfoList.add(ad);
+                    }
+
                     String firstImageUrl = "";
                     if (dataSnapshot.child("images").exists()) {
                         for (DataSnapshot imageSnapshot : dataSnapshot.child("images").getChildren()) {
@@ -171,16 +192,24 @@ public class CategoryAds extends AppCompatActivity {
                         }
                     }
 
-                    adsInfoList.add(new AdsInfo(category, brand, model, milage, capacity, description, price, area, firstImageUrl));
+                    AdsInfo ad = new AdsInfo(category, brand, model, milage, capacity, description, price, area, firstImageUrl);
+
+
+                    // Filter ads by category
+                    if (selectedCategory.isEmpty() || selectedCategory.equalsIgnoreCase(category)) {
+                        adsInfoList.add(ad);
+                    }
                 }
                 adsAdapter.setAdsInfoList(adsInfoList);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("CategoryAds", "Database error: " + error.getMessage());
             }
         });
     }
+
 
     private void filterAds() {
         List<AdsInfo> filteredAds = new ArrayList<>();
