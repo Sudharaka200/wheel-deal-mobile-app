@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="TextView"
-            android:textColor="#FFF"
+            android:textColor="#08449c"
             app:layout_constraintBottom_toBottomOf="@+id/imagView1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.793"
