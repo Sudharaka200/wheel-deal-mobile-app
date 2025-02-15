@@ -169,6 +169,16 @@ public class createnewadd extends AppCompatActivity {
                 }
             }
         });
+        ImageView backbuttonSeach = findViewById(R.id.btnBack2);
+
+        backbuttonSeach.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent backButtonSearch = new Intent(getApplicationContext(),home.class);
+                startActivity(backButtonSearch);
+            }
+        });
+
     }
 
     private void turnOnGPS() {
@@ -265,7 +275,6 @@ public class createnewadd extends AppCompatActivity {
         String descriptionD = descriptionEdt.getText().toString();
         int priceD = Integer.parseInt(priceEdt.getText().toString().trim());
 
-        String locationD = locationEdt.getText().toString();
         String emailD = emailCheck.getText().toString();
 
 //        String locationD = locationEdt.getText().toString().trim();
@@ -415,5 +424,6 @@ public class createnewadd extends AppCompatActivity {
         intent.setType("image/*");
         launcher.launch(intent);
     }
+
 
 }

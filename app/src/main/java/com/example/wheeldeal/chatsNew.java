@@ -49,6 +49,16 @@ public class chatsNew extends AppCompatActivity {
                 startActivity(homeButtonIntent);
             }
         });
+        ImageView backbuttonSeach = findViewById(R.id.btnBack25);
+
+        backbuttonSeach.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent backButtonSearch = new Intent(getApplicationContext(),home.class);
+                startActivity(backButtonSearch);
+            }
+        });
+
 
         //buttonSearch
         ImageView imgSearchButton = findViewById(R.id.imgSearch);

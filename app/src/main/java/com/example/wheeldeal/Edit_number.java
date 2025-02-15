@@ -26,56 +26,56 @@ public class Edit_number extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_edit_number);
 
-        // Initialize Firebase
-        mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
-
-        // Initialize UI elements
-//        editCurrentNumber = findViewById(R.id.textView62);
-//        editNewNumber = findViewById(R.id.textView63);
-        btnConfirm = findViewById(R.id.btnupdte2);
-        btnCancel = findViewById(R.id.btncancl1);
-
-        // Load current phone number
-        loadCurrentPhoneNumber();
-
-        // Set click listeners
-        btnConfirm.setOnClickListener(v -> updatePhoneNumber());
-        btnCancel.setOnClickListener(v -> finish());
-    }
-
-    private void loadCurrentPhoneNumber() {
-        FirebaseUser user = mAuth.getCurrentUser();
-        if (user != null) {
-            db.collection("users").document(user.getUid()).get()
-                    .addOnSuccessListener(documentSnapshot -> {
-                        if (documentSnapshot.exists()) {
-                            editCurrentNumber.setText(documentSnapshot.getString("phoneNumber"));
-                        }
-                    })
-                    .addOnFailureListener(e ->
-                            Toast.makeText(Edit_number.this, "Failed to load phone number", Toast.LENGTH_SHORT).show());
-        }
-    }
-
-    private void updatePhoneNumber() {
-        String newNumber = editNewNumber.getText().toString().trim();
-
-        if (newNumber.isEmpty()) {
-            Toast.makeText(this, "Please enter a new phone number", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        FirebaseUser user = mAuth.getCurrentUser();
-        if (user != null) {
-            db.collection("users").document(user.getUid())
-                    .update("phoneNumber", newNumber)
-                    .addOnSuccessListener(aVoid -> {
-                        Toast.makeText(Edit_number.this, "Phone number updated successfully", Toast.LENGTH_SHORT).show();
-                        finish();
-                    })
-                    .addOnFailureListener(e ->
-                            Toast.makeText(Edit_number.this, "Failed to update phone number", Toast.LENGTH_SHORT).show());
-        }
+//        // Initialize Firebase
+//        mAuth = FirebaseAuth.getInstance();
+//        db = FirebaseFirestore.getInstance();
+//
+//        // Initialize UI elements
+////        editCurrentNumber = findViewById(R.id.textView62);
+////        editNewNumber = findViewById(R.id.textView63);
+//        btnConfirm = findViewById(R.id.btnupdte2);
+//        btnCancel = findViewById(R.id.btncancl1);
+//
+//        // Load current phone number
+//        loadCurrentPhoneNumber();
+//
+//        // Set click listeners
+//        btnConfirm.setOnClickListener(v -> updatePhoneNumber());
+//        btnCancel.setOnClickListener(v -> finish());
+//    }
+//
+//    private void loadCurrentPhoneNumber() {
+//        FirebaseUser user = mAuth.getCurrentUser();
+//        if (user != null) {
+//            db.collection("users").document(user.getUid()).get()
+//                    .addOnSuccessListener(documentSnapshot -> {
+//                        if (documentSnapshot.exists()) {
+//                            editCurrentNumber.setText(documentSnapshot.getString("phoneNumber"));
+//                        }
+//                    })
+//                    .addOnFailureListener(e ->
+//                            Toast.makeText(Edit_number.this, "Failed to load phone number", Toast.LENGTH_SHORT).show());
+//        }
+//    }
+//
+//    private void updatePhoneNumber() {
+//        String newNumber = editNewNumber.getText().toString().trim();
+//
+//        if (newNumber.isEmpty()) {
+//            Toast.makeText(this, "Please enter a new phone number", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//
+//        FirebaseUser user = mAuth.getCurrentUser();
+//        if (user != null) {
+//            db.collection("users").document(user.getUid())
+//                    .update("phoneNumber", newNumber)
+//                    .addOnSuccessListener(aVoid -> {
+//                        Toast.makeText(Edit_number.this, "Phone number updated successfully", Toast.LENGTH_SHORT).show();
+//                        finish();
+//                    })
+//                    .addOnFailureListener(e ->
+//                            Toast.makeText(Edit_number.this, "Failed to update phone number", Toast.LENGTH_SHORT).show());
+//        }
     }
 }

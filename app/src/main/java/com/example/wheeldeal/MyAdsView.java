@@ -3,6 +3,8 @@ package com.example.wheeldeal;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -81,6 +83,15 @@ public class MyAdsView extends AppCompatActivity {
 
             // Fetch ads from Firebase
             fetchAdsFromFirebase();
+            ImageView backbuttonSeach = findViewById(R.id.btnBack01);
+
+            backbuttonSeach.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent backButtonSearch = new Intent(getApplicationContext(),home.class);
+                    startActivity(backButtonSearch);
+                }
+            });
         }
     }
 
@@ -130,6 +141,7 @@ public class MyAdsView extends AppCompatActivity {
                 Log.e("FirebaseError", "Error fetching ads: " + error.getMessage());
             }
         });
+
     }
 
 
