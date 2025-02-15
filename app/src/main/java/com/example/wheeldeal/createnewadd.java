@@ -45,7 +45,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import com.google.android.gms.tasks.Task;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -70,10 +75,25 @@ public class createnewadd extends AppCompatActivity {
     private Button btnPost;
     private  LocationRequest locationRequest;
 
+    FirebaseAuth auth;
+    TextView emailCheck;
+    FirebaseUser user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_createnewadd);
+
+        //user check
+        auth = FirebaseAuth.getInstance();
+        emailCheck = findViewById(R.id.getloginEmail);
+        user = auth.getCurrentUser();
+        if (user == null){
+
+        }
+        else {
+            emailCheck.setText(user.getEmail());
+        }
 
         // Initialize UI elements
         categoryEdt = findViewById(R.id.cmbVehicleCategory);
@@ -85,6 +105,7 @@ public class createnewadd extends AppCompatActivity {
         priceEdt = findViewById(R.id.txtPrice);
         locationEdt = findViewById(R.id.txtLocation);
         btnPost = findViewById(R.id.btnPostAd);
+        emailCheck = findViewById(R.id.getloginEmail);
 
         addImage1 = findViewById(R.id.imgAdd1);
         addImage2 = findViewById(R.id.imgAdd2);
@@ -240,7 +261,12 @@ public class createnewadd extends AppCompatActivity {
         int capacityD = Integer.parseInt(capacityEdt.getText().toString().trim());
         String descriptionD = descriptionEdt.getText().toString();
         int priceD = Integer.parseInt(priceEdt.getText().toString().trim());
+
+        String locationD = locationEdt.getText().toString();
+        String emailD = emailCheck.getText().toString();
+
         String locationD = locationEdt.getText().toString().trim();
+
 
         if (categoryD.isEmpty() || brandD.isEmpty() || mileageD == 0 || capacityD == 0 || descriptionD.isEmpty() || priceD == 0 || locationD.isEmpty()) {
             Toast.makeText(this, "All fields must be filled", Toast.LENGTH_SHORT).show();
@@ -259,6 +285,7 @@ public class createnewadd extends AppCompatActivity {
         dbHashMap.put("description", descriptionD);
         dbHashMap.put("price", priceD);
         dbHashMap.put("location", locationD);
+        dbHashMap.put("email", emailD);
 
         dbRef.child(key).setValue(dbHashMap).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {

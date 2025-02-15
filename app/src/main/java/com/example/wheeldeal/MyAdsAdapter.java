@@ -12,7 +12,7 @@ import java.util.List;
 import com.bumptech.glide.Glide;
 
 
-public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsViewHolder> {
+public class MyAdsAdapter extends RecyclerView.Adapter<MyAdsAdapter.AdsViewHolder> {
     private List<AdsInfo> adsInfoList = new ArrayList<>();
     private OnItemClickListener listener;
     private Context context;
@@ -20,7 +20,7 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsViewHolder> {
         void onItemClick(AdsInfo adsInfo);
     }
     // Constructor to initialize the adapter
-    public AdsAdapter(List<AdsInfo> adsInfoList) {
+    public MyAdsAdapter(List<AdsInfo> adsInfoList) {
         this.adsInfoList = new ArrayList<>();
     }
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -31,7 +31,7 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsViewHolder> {
     @Override
     public AdsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_view_s, parent, false);
+                .inflate(R.layout.mylist_addview, parent, false);
         return new AdsViewHolder(view);
     }
 
@@ -96,6 +96,7 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsViewHolder> {
             imageView = itemView.findViewById(R.id.imgCar);
         }
     }
+
 
 
 }

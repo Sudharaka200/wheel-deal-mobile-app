@@ -43,6 +43,9 @@ public class home extends AppCompatActivity {
 
         navigation();
 
+        adsInfoList = new ArrayList<>(); // Prevent NullPointerException
+
+
         //user check
         auth = FirebaseAuth.getInstance();
         emailCheck = findViewById(R.id.LoginCheckEmail);
@@ -61,7 +64,7 @@ public class home extends AppCompatActivity {
         recyclerView = findViewById(R.id.allAdsRecycleView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adsAdapter = new AdsAdapter();
+        adsAdapter = new AdsAdapter(adsInfoList);
         recyclerView.setAdapter(adsAdapter);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("ads");
@@ -113,6 +116,7 @@ public class home extends AppCompatActivity {
                     String description = dataSnapshot.child("description").getValue(String.class);
                     Long priceLong = dataSnapshot.child("price").getValue(Long.class);
                     String area = dataSnapshot.child("location").getValue(String.class);
+                    String email = dataSnapshot.child("email").getValue(String.class);
 
                     int milage = milageLong != null ? milageLong.intValue() : 0;
                     int capacity = capacityLong != null ? capacityLong.intValue() : 0;
@@ -126,7 +130,7 @@ public class home extends AppCompatActivity {
                         }
                     }
 
-                    adsInfoList.add(new AdsInfo(category, brand, model, milage, capacity, description, price, area, firstImageUrl));
+                    adsInfoList.add(new AdsInfo(category, brand, model, milage, capacity, description, price, area, firstImageUrl, email));
                 }
                 adsAdapter.setAdsInfoList(adsInfoList);
             }
@@ -153,16 +157,23 @@ public class home extends AppCompatActivity {
         });
     }
 
-    public void searchList(String text) {
-        ArrayList<AdsInfo> searchList = new ArrayList<>();
-        for (AdsInfo adsInfo : adsInfoList) {
-            if ((adsInfo.getaModel() != null && adsInfo.getaModel().toLowerCase().contains(text.toLowerCase())) ||
-                    (adsInfo.getaBrand() != null && adsInfo.getaBrand().toLowerCase().contains(text.toLowerCase()))) {
-                searchList.add(adsInfo);
+    private void searchList(String query) {
+        if (adsInfoList == null) {
+            adsInfoList = new ArrayList<>(); // Ensure the list is not null
+        }
+
+        List<AdsInfo> filteredList = new ArrayList<>();
+        for (AdsInfo ad : adsInfoList) {
+            if (ad.getaBrand().toLowerCase().contains(query.toLowerCase()) ||
+                    ad.getaBrand().toLowerCase().contains(query.toLowerCase()) ||
+                    ad.getaBrand().toLowerCase().contains(query.toLowerCase())) {
+                filteredList.add(ad);
             }
         }
-        adsAdapter.searchAdsList(searchList);
+
+        adsAdapter.setAdsInfoList(filteredList);
     }
+
 
 
 

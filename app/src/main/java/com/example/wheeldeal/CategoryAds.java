@@ -16,8 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -65,7 +63,7 @@ public class CategoryAds extends AppCompatActivity {
 
 
         databaseReference = FirebaseDatabase.getInstance().getReference("ads");
-        adsAdapter = new AdsAdapter();
+        adsAdapter = new AdsAdapter(adsInfoList);
         recyclerView.setAdapter(adsAdapter);
 
         fetchAdsFromFirebase(); // Fetch and filter ads by category
@@ -173,6 +171,7 @@ public class CategoryAds extends AppCompatActivity {
                     String description = dataSnapshot.child("description").getValue(String.class);
                     Long priceLong = dataSnapshot.child("price").getValue(Long.class);
                     String area = dataSnapshot.child("location").getValue(String.class);
+                    String email = dataSnapshot.child("email").getValue(String.class);
 
                     int milage = milageLong != null ? milageLong.intValue() : 0;
                     int capacity = capacityLong != null ? capacityLong.intValue() : 0;
@@ -192,7 +191,7 @@ public class CategoryAds extends AppCompatActivity {
                         }
                     }
 
-                    AdsInfo ad = new AdsInfo(category, brand, model, milage, capacity, description, price, area, firstImageUrl);
+                    AdsInfo ad = new AdsInfo(category, brand, model, milage, capacity, description, price, area, firstImageUrl, email);
 
 
                     // Filter ads by category

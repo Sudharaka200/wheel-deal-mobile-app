@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -48,7 +47,7 @@ public class search extends AppCompatActivity {
         recyclerView = findViewById(R.id.allAdsRecycleView1);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adsAdapter = new AdsAdapter();
+        adsAdapter = new AdsAdapter(adsInfoList);
         recyclerView.setAdapter(adsAdapter);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("ads");
@@ -96,6 +95,7 @@ public class search extends AppCompatActivity {
                     String description = dataSnapshot.child("description").getValue(String.class);
                     Long priceLong = dataSnapshot.child("price").getValue(Long.class);
                     String area = dataSnapshot.child("location").getValue(String.class);
+                    String email = dataSnapshot.child("email").getValue(String.class);
 
                     int milage = milageLong != null ? milageLong.intValue() : 0;
                     int capacity = capacityLong != null ? capacityLong.intValue() : 0;
@@ -109,7 +109,7 @@ public class search extends AppCompatActivity {
                         }
                     }
 
-                    adsInfoList.add(new AdsInfo(category, brand, model, milage, capacity, description, price, area, firstImageUrl));
+                    adsInfoList.add(new AdsInfo(category, brand, model, milage, capacity, description, price, area, firstImageUrl, email));
                 }
                 adsAdapter.setAdsInfoList(adsInfoList);
             }
