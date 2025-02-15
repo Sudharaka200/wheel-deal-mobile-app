@@ -53,11 +53,11 @@
         <activity
             android:name=".favourites"
             android:exported="false" />
+        <activity android:name=".addView"
+            android:exported="true" />
+
         <activity
             android:name=".profile"
-            android:exported="false" />
-        <activity
-            android:name=".addView"
             android:exported="false" />
         <activity
             android:name=".home"

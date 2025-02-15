@@ -23,6 +23,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -36,12 +38,15 @@ import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.location.Priority;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.bumptech.glide.request.RequestOptions;
 
 public class addView extends AppCompatActivity {
 
     // Declare all the views
-    private TextView txtCategory, txtBrand, txtMilage, txtCapacity, txtDescription, txtPrice, txtArea;
-    private TextView txtBack, textView15, textView16, textView17, textView18, textView19, textView28;
+    private TextView txtCategory, txtBrand, txtModel, txtMilage, txtCapacity, txtDescription, txtPrice, txtArea;
+    private TextView txtBack, textView15, textView16, textView17, textView18, textView19, textView28, textView40;
+
+    ImageView imageView14;
 
     TextView txtAddLocationD;
     TextView txtMyLocationD;
@@ -66,6 +71,7 @@ public class addView extends AppCompatActivity {
         textView18 = findViewById(R.id.textView18);
         textView19 = findViewById(R.id.textView19);
         textView28 = findViewById(R.id.textView28);
+        textView40 = findViewById(R.id.textView40);
 //        btnLocation = findViewById(R.id.button);
 //        btnCall = findViewById(R.id.btncancel22);
 //        btnChat = findViewById(R.id.button4);
@@ -79,6 +85,7 @@ public class addView extends AppCompatActivity {
             String description = intent.getStringExtra("description");
             int price = intent.getIntExtra("price", 0);
             String area = intent.getStringExtra("area");
+            String model = intent.getStringExtra("model");
 
             // Populate the views with the ad details
             textView15.setText(brand); // Brand
@@ -86,7 +93,8 @@ public class addView extends AppCompatActivity {
             textView17.setText("Rs"); // Currency symbol
             textView18.setText(String.valueOf(price)); // Price
             textView19.setText("Description"); // Description label
-            textView28.setText(description); // Description text
+            textView28.setText(description);
+            textView40.setText(model);
 
             TextView txtGetLocation = findViewById(R.id.txtAddLocationView);
             txtGetLocation.setText(area);
@@ -99,6 +107,16 @@ public class addView extends AppCompatActivity {
         locationRequest.setFastestInterval(2000);
 
         googleMapLocation();
+
+        ImageView adImageView = findViewById(R.id.imageView14);
+        String imageUrl = intent.getStringExtra("imageUrl");
+
+        if (imageUrl != null && !imageUrl.isEmpty()) {
+            Glide.with(this)
+                    .load(imageUrl)
+                    .apply(new RequestOptions().placeholder(R.drawable.images_24).error(R.drawable.images_23))
+                    .into(adImageView);
+        }
 
 
 
@@ -297,9 +315,6 @@ public class addView extends AppCompatActivity {
         });
 
 
-
-
-
         ImageView btnBackbutton = findViewById(R.id.btnBack);
 
         btnBackbutton.setOnClickListener(new View.OnClickListener() {
@@ -310,16 +325,8 @@ public class addView extends AppCompatActivity {
             }
         });
 
-        TextView txtBackButton = findViewById(R.id.txtBack);
-
-        txtBackButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent Backtxtintent = new Intent(getApplicationContext(), home.class);
-                startActivity(Backtxtintent);
-            }
-        });
     }
+
 
 
 }

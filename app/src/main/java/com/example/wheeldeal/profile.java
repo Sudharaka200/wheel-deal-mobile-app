@@ -133,14 +133,14 @@ public class profile extends AppCompatActivity {
 
 
 
-        ImageView btnPhone =  findViewById(R.id.btnPhoneNumber);
-        btnPhone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent btnP = new Intent(getApplicationContext(), Edit_number.class);
-                startActivity(btnP);
-            }
-        });
+//        ImageView btnPhone =  findViewById(R.id.btnPhoneNumber);
+//        btnPhone.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent btnP = new Intent(getApplicationContext(), Edit_number.class);
+//                startActivity(btnP);
+//            }
+//        });
 
         ImageView btnCreateNewAdd = findViewById(R.id.createAdvertisment);
         btnCreateNewAdd.setOnClickListener(new View.OnClickListener() {
@@ -159,9 +159,6 @@ public class profile extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        ImageView btnmyAds = findViewById(R.id.btnMyAds);
-        btnmyAds.setOnClickListener(v -> onMyAdsButtonClick(v));
 
 
         ImageView btnFavList = findViewById(R.id.btnFavouriteList);

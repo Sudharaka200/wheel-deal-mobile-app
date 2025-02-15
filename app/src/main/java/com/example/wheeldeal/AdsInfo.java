@@ -1,5 +1,9 @@
 package com.example.wheeldeal;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
+import android.content.Intent;
+
 public class AdsInfo {
     private String aCategory;
     private String aBrand;
@@ -28,6 +32,7 @@ public class AdsInfo {
         this.aLocation = aLocation;
         this.imageUrl = imageUrl;
         this.aEmail = aEmail;
+
     }
 
     public String getaEmail() {

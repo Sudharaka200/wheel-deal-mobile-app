@@ -67,7 +67,7 @@
             app:srcCompat="@drawable/images_17" />
 
         <ImageView
-            android:id="@+id/imageView21"
+            android:id="@+id/btnBack25"
             android:layout_width="48dp"
             android:layout_height="34dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView14"

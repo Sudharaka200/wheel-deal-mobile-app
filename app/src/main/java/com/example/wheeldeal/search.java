@@ -188,5 +188,15 @@ public class search extends AppCompatActivity {
                 startActivity(backButtonSearch);
             }
         });
+        ImageView imgHomeButton = findViewById(R.id.imgHome);
+
+        imgHomeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent homeButtonIntent = new Intent(getApplicationContext(), home.class);
+                startActivity(homeButtonIntent);
+            }
+        });
+
     }
 }
