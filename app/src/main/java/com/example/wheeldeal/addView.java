@@ -1,31 +1,55 @@
 package com.example.wheeldeal;
 
-import android.annotation.SuppressLint;
+import android.Manifest;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentSender;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.core.app.ActivityCompat;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.ResolvableApiException;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResponse;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.google.android.gms.location.Priority;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 public class addView extends AppCompatActivity {
 
     // Declare all the views
     private TextView txtCategory, txtBrand, txtMilage, txtCapacity, txtDescription, txtPrice, txtArea;
     private TextView txtBack, textView15, textView16, textView17, textView18, textView19, textView28;
+
+    TextView txtAddLocationD;
+    TextView txtMyLocationD;
+    Button btnLocationD;
+
+    private static final int REQUEST_CHECK_SETTINGS = 10001;
+    private  LocationRequest locationRequest;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,13 +88,152 @@ public class addView extends AppCompatActivity {
             textView19.setText("Description"); // Description label
             textView28.setText(description); // Description text
 
-            TextView txtGetLocation = findViewById(R.id.txtGetLocationView);
+            TextView txtGetLocation = findViewById(R.id.txtAddLocationView);
             txtGetLocation.setText(area);
         }
         navigation();
 
+        locationRequest = LocationRequest.create();
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationRequest.setInterval(5000);
+        locationRequest.setFastestInterval(2000);
+
+        googleMapLocation();
+
+
+
 
     }
+
+
+    public void googleMapLocation() {
+        txtAddLocationD = findViewById(R.id.txtAddLocationView);
+        btnLocationD = findViewById(R.id.btnLocation);
+
+        btnLocationD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (ActivityCompat.checkSelfPermission(addView.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                            ActivityCompat.checkSelfPermission(addView.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                        requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
+                        return;
+                    }
+                }
+
+                if (isGPSEnabled()) {
+                    FusedLocationProviderClient fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(addView.this);
+
+                    LocationRequest locationRequest = new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 5000)
+                            .setMinUpdateIntervalMillis(1000)
+                            .build();
+
+                    LocationCallback locationCallback = new LocationCallback() {
+                        @Override
+                        public void onLocationResult(@NonNull LocationResult locationResult) {
+                            super.onLocationResult(locationResult);
+
+                            if (locationResult != null && !locationResult.getLocations().isEmpty()) {
+                                int index = locationResult.getLocations().size() - 1;
+                                double latitude = locationResult.getLocations().get(index).getLatitude();
+                                double longitude = locationResult.getLocations().get(index).getLongitude();
+                                txtMyLocationD = findViewById(R.id.txtGetMyLocation);
+
+
+                                if (txtMyLocationD != null) {
+                                    txtMyLocationD.setText(String.format("%.6f, %.6f", latitude, longitude));
+
+                                    String txtAdLocation = txtAddLocationD.getText().toString().trim();
+                                    String txtMyLocation = txtMyLocationD.getText().toString().trim();
+                                    if (txtAdLocation.isEmpty() || txtMyLocation.isEmpty()) {
+                                        Toast.makeText(v.getContext(), "Your Location Not Found", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        getDirections(txtMyLocation, txtAdLocation);
+                                    }
+                                } else {
+                                    Log.e("Location Error", "TextView txtMyLocationD is null");
+                                }
+                            }
+                        }
+                    };
+
+                    fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
+                } else {
+                    turnOnGPS();
+                }
+            }
+        });
+    }
+
+
+
+    private void getDirections(String from, String to) {
+        try {
+            Uri uri = Uri.parse("http://www.google.com/maps/dir/" + Uri.encode(from) + "/" + Uri.encode(to));
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            intent.setPackage("com.google.android.apps.maps");
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        } catch (ActivityNotFoundException exception) {
+            Uri uri = Uri.parse("http://play.google.com/store/apps/details?id=com.google.android.apps.maps");
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+    }
+
+
+    private void turnOnGPS() {
+        btnLocationD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+                        .addLocationRequest(locationRequest);
+                builder.setAlwaysShow(true);
+
+                Task<LocationSettingsResponse> result = LocationServices.getSettingsClient(getApplicationContext())
+                        .checkLocationSettings(builder.build());
+
+                result.addOnCompleteListener(new OnCompleteListener<LocationSettingsResponse>() {
+                    @Override
+                    public void onComplete(@NonNull Task<LocationSettingsResponse> task) {
+
+                        try {
+                            LocationSettingsResponse response = task.getResult(ApiException.class);
+                            Toast.makeText(addView.this, "GPS is already tured on", Toast.LENGTH_SHORT).show();
+
+                        } catch (ApiException e) {
+
+                            switch (e.getStatusCode()) {
+                                case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+
+                                    try {
+                                        ResolvableApiException resolvableApiException = (ResolvableApiException)e;
+                                        resolvableApiException.startResolutionForResult(addView.this,REQUEST_CHECK_SETTINGS);
+                                    } catch (IntentSender.SendIntentException ex) {
+                                        ex.printStackTrace();
+                                    }
+                                    break;
+
+                                case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                                    //Device does not have location
+                                    break;
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    private boolean isGPSEnabled() {
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        return locationManager != null && locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+    }
+
+
 
 //    public void locationName(){
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();
