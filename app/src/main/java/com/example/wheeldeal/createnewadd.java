@@ -2,6 +2,8 @@ package com.example.wheeldeal;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -13,6 +15,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -265,7 +268,7 @@ public class createnewadd extends AppCompatActivity {
         String locationD = locationEdt.getText().toString();
         String emailD = emailCheck.getText().toString();
 
-        String locationD = locationEdt.getText().toString().trim();
+//        String locationD = locationEdt.getText().toString().trim();
 
 
         if (categoryD.isEmpty() || brandD.isEmpty() || mileageD == 0 || capacityD == 0 || descriptionD.isEmpty() || priceD == 0 || locationD.isEmpty()) {
@@ -321,34 +324,91 @@ public class createnewadd extends AppCompatActivity {
         Brand.setAdapter(adapter2);
     }
 
+    private Uri cameraImageUri;
+
     private void setupImagePickers() {
-        resultLauncher1 = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-                    if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
-                        imageUri1 = result.getData().getData();
-                        addImage1.setImageURI(imageUri1);
-                    }
-                });
-        addImage1.setOnClickListener(v -> displayImagePicker(resultLauncher1));
-
-        resultLauncher2 = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-                    if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
-                        imageUri2 = result.getData().getData();
-                        addImage2.setImageURI(imageUri2);
-                    }
-                });
-        addImage2.setOnClickListener(v -> displayImagePicker(resultLauncher2));
-
-        resultLauncher3 = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-                    if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
-                        imageUri3 = result.getData().getData();
-                        addImage3.setImageURI(imageUri3);
-                    }
-                });
-        addImage3.setOnClickListener(v -> displayImagePicker(resultLauncher3));
+        setupImagePicker(addImage1);
+        setupImagePicker(addImage2);
+        setupImagePicker(addImage3);
     }
+
+    private void setupImagePicker(ImageView imageView) {
+        ActivityResultLauncher<Intent> galleryLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+                        Uri imageUri = result.getData().getData();
+                        imageView.setImageURI(imageUri);
+                    }
+                });
+
+        ActivityResultLauncher<Uri> cameraLauncher = registerForActivityResult(
+                new ActivityResultContracts.TakePicture(),
+                isSuccess -> {
+                    if (isSuccess) {
+                        imageView.setImageURI(cameraImageUri);
+                    }
+                });
+
+        imageView.setOnClickListener(v -> showImageSourceDialog(galleryLauncher, cameraLauncher));
+    }
+
+    private void showImageSourceDialog(ActivityResultLauncher<Intent> galleryLauncher, ActivityResultLauncher<Uri> cameraLauncher) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select Image Source")
+                .setItems(new String[]{"Camera", "Gallery"}, (dialog, which) -> {
+                    if (which == 0) {
+                        // Open Camera
+                        cameraImageUri = createImageUri(); // Create URI for saving the image
+                        if (cameraImageUri != null) {
+                            cameraLauncher.launch(cameraImageUri);
+                        }
+                    } else {
+                        // Open Gallery
+                        Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        galleryLauncher.launch(galleryIntent);
+                    }
+                })
+                .show();
+    }
+
+    private Uri createImageUri() {
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.TITLE, "New Picture");
+        values.put(MediaStore.Images.Media.DESCRIPTION, "From Camera");
+        return getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+    }
+
+
+
+//    private void setupImagePickers() {
+//        resultLauncher1 = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+//                result -> {
+//                    if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+//                        imageUri1 = result.getData().getData();
+//                        addImage1.setImageURI(imageUri1);
+//                    }
+//                });
+//        addImage1.setOnClickListener(v -> displayImagePicker(resultLauncher1));
+//
+//        resultLauncher2 = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+//                result -> {
+//                    if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+//                        imageUri2 = result.getData().getData();
+//                        addImage2.setImageURI(imageUri2);
+//                    }
+//                });
+//        addImage2.setOnClickListener(v -> displayImagePicker(resultLauncher2));
+//
+//        resultLauncher3 = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+//                result -> {
+//                    if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+//                        imageUri3 = result.getData().getData();
+//                        addImage3.setImageURI(imageUri3);
+//                    }
+//                });
+//        addImage3.setOnClickListener(v -> displayImagePicker(resultLauncher3));
+//    }
 
     private void displayImagePicker(ActivityResultLauncher<Intent> launcher) {
         Intent intent = new Intent(Intent.ACTION_PICK);
